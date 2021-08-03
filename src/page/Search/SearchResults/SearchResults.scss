@@ -1,0 +1,63 @@
+@import "../../../color.scss";
+
+.search-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+  padding: 0 1.5rem;
+  padding-top: 1rem;
+  height: calc(100vh - 81px);
+  overflow-y: auto;
+
+  .feed-card,
+  .loading-feed-card {
+    .head {
+      height: 160px;
+    }
+  }
+
+  .not-found {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    margin-top: -100px;
+
+    img {
+      width: 50%;
+      margin-bottom: 1rem;
+    }
+
+    div {
+      width: 100%;
+      font-size: 1.25rem;
+      font-weight: 500;
+
+      span {
+        color: $red;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.search-results.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 420px) {
+  .search-results {
+    column-gap: 1.5rem;
+
+    .feed-card,
+    .loading-feed-card {
+      .head {
+        height: 200px;
+      }
+    }
+  }
+}

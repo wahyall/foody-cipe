@@ -1,0 +1,109 @@
+@import "../../color.scss";
+
+.create-cookbook {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color: $text-dark, $alpha: 0.5);
+  z-index: 2;
+  visibility: hidden;
+
+  .modal {
+    width: 90%;
+    max-width: 420px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: $bg-white;
+    border-radius: 8px;
+    opacity: 0;
+    transition: 0.3s;
+
+    .modal-header {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba($color: $text-dark, $alpha: 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .title {
+        font-weight: 600;
+      }
+
+      .close {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+
+    .modal-body {
+      padding: 0.75rem 1rem;
+
+      .input-group {
+        display: grid;
+        grid-template-rows: auto auto;
+        margin-bottom: 1rem;
+
+        label {
+          font-weight: 500;
+          margin-bottom: 0.25rem;
+        }
+
+        .input {
+          border-radius: 6px;
+          outline: none;
+          border: 1px solid rgba($color: $text-dark, $alpha: 0.3);
+          background-color: transparent;
+          padding: 0.5rem 0.75rem;
+        }
+
+        .input:focus {
+          border-color: $red;
+        }
+      }
+    }
+
+    .modal-footer {
+      padding: 0.75rem 1rem;
+      border-top: 1px solid rgba($color: $text-dark, $alpha: 0.3);
+
+      .create-btn {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        text-align: center;
+        border-radius: 6px;
+        background-color: $red;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: $bg-white;
+        border: none;
+        outline: none;
+      }
+
+      .create-btn:disabled {
+        opacity: 0.75;
+      }
+
+      .create-btn:active {
+        background-color: darken($color: $red, $amount: 5);
+      }
+    }
+  }
+}
+
+.create-cookbook.active {
+  visibility: visible;
+
+  .modal {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

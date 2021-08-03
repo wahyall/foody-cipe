@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14.315" height="22.609" viewBox="0 0 14.315 22.609">
+  <g id="cookbook-unactive" transform="translate(-96.1 0.313)" opacity="0.5">
+    <g id="Group_452" data-name="Group 452" transform="translate(96.4 -0.004)">
+      <path id="Path_24" data-name="Path 24" d="M168.279,196.337h-.108a3.414,3.414,0,0,0-2.7-2.7.652.652,0,1,0-1.289,0,3.414,3.414,0,0,0-2.7,2.7.648.648,0,1,0-.108,1.289h6.9a.645.645,0,0,0,0-1.289Zm-5.468,0a2.121,2.121,0,0,1,4.033,0Z" transform="translate(-157.97 -184.6)" fill="#be4f00" stroke="#be4f00" stroke-width="0.6"/>
+      <path id="Path_25" data-name="Path 25" d="M168.285,353.467h-6.9a.645.645,0,1,0,0,1.289h6.9a.645.645,0,1,0,0-1.289Z" transform="translate(-157.976 -338.506)" fill="#be4f00" stroke="#be4f00" stroke-width="0.6"/>
+      <path id="Path_26" data-name="Path 26" d="M212.346,417.733h-2.761a.645.645,0,1,0,0,1.289h2.761a.645.645,0,1,0,0-1.289Z" transform="translate(-204.108 -399.784)" fill="#be4f00" stroke="#be4f00" stroke-width="0.6"/>
+      <path id="Path_27" data-name="Path 27" d="M109.47,4.829h-2.117V.641a.644.644,0,0,0-.933-.577L96.756,4.9a.644.644,0,0,0-.356.577V21.351a.644.644,0,0,0,.644.644H109.47a.644.644,0,0,0,.644-.644V5.473A.644.644,0,0,0,109.47,4.829Zm-3.406-3.145V4.829h-6.29Zm2.761,19.023H97.689V6.118h11.137Z" transform="translate(-96.4 0.004)" fill="#be4f00" stroke="#be4f00" stroke-width="0.6"/>
+    </g>
+  </g>
+</svg>

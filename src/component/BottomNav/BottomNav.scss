@@ -1,0 +1,77 @@
+@import "../../color.scss";
+
+.bottom-nav {
+  width: 100%;
+  max-width: inherit;
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $bg-light;
+  border-top: 1px solid rgba($color: $red, $alpha: 1);
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  .nav-link {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .nav-item {
+    position: relative;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+      padding: 0.5rem;
+      background-color: transparent;
+
+      img {
+        width: auto;
+        height: 25px;
+      }
+    }
+
+    .name {
+      color: $red;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      display: none;
+    }
+  }
+
+  .nav-item.active {
+    width: auto;
+    padding: 0.5rem;
+    background-color: rgba($color: $red, $alpha: 0.15);
+    border-radius: 6px;
+
+    .icon {
+      padding: 0.5rem;
+      background-color: $red;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+
+      img {
+        width: auto;
+        height: 14px;
+      }
+    }
+
+    .name {
+      display: inline-block;
+    }
+  }
+}

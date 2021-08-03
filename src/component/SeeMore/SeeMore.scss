@@ -1,0 +1,61 @@
+@import "../../color.scss";
+
+.see-more {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $bg-white;
+  overflow-y: auto;
+  z-index: 1;
+  transform: translateX(100%);
+  transition: 0.2s;
+
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    padding-bottom: 1rem;
+
+    .title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .back {
+      width: auto;
+      height: 16px;
+      transform: rotateY(180deg);
+      margin-right: 1rem;
+    }
+
+    .search {
+      margin-left: auto;
+
+      img {
+        width: auto;
+        height: 18px;
+      }
+    }
+  }
+
+  .content {
+    padding: 0 1.5rem;
+    height: calc(100vh - 76px);
+    overflow-y: auto;
+
+    .jumbo-card,
+    .loading-jumbo-card {
+      height: 180px;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+.see-more.active {
+  transform: translateX(0);
+}

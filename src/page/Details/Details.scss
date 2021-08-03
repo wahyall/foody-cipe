@@ -1,0 +1,140 @@
+@import "../../color.scss";
+
+#details {
+  position: absolute;
+  width: 100%;
+  max-width: 480px;
+  top: 0;
+  bottom: 0;
+  background-color: $bg-white;
+  z-index: 2;
+  overflow-y: auto;
+
+  .navbar {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    max-width: 480px;
+    transform: translateX(-50%);
+    transition: 0.3s;
+
+    .action-button.cookbook {
+      margin-left: auto;
+      margin-right: 1rem;
+    }
+  }
+
+  .navbar.scroll {
+    padding: 0.75rem 1.5rem;
+    background-color: rgba($color: $bg-white, $alpha: 0.4);
+    backdrop-filter: blur(3px);
+
+    .action-button {
+      background-color: rgba($color: $text-dark, $alpha: 0.5);
+    }
+  }
+
+  .body {
+    .recipe-img {
+      width: 100%;
+      height: 240px;
+      position: relative;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .content {
+      background-color: $bg-light;
+      margin-top: -50px;
+      border-radius: 2rem 2rem 0 0;
+      position: relative;
+      padding: 2.5rem 0;
+
+      .recipe-name {
+        padding: 0 1.5rem;
+        font-size: 1.25rem;
+        line-height: 1.2em;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        margin-bottom: 1.5rem;
+
+        .item {
+          text-align: center;
+          font-size: 0.75rem;
+          line-height: 1.5em;
+          position: relative;
+
+          .value {
+            font-size: 1rem;
+            font-weight: 600;
+          }
+        }
+
+        .line-separator {
+          width: 1px;
+          height: 20px;
+          background-color: $text-dark;
+        }
+      }
+
+      .tabs {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        margin-bottom: 1.25rem;
+
+        .tab-item {
+          cursor: pointer;
+        }
+
+        .tab-item.active {
+          font-weight: 600;
+          position: relative;
+        }
+
+        .tab-item.active::before {
+          content: "";
+          width: 100%;
+          height: 4px;
+          border-radius: 4px;
+          background-color: $red;
+          position: absolute;
+          bottom: -0.5rem;
+        }
+      }
+
+      .details-tab {
+        display: none;
+      }
+
+      .details-tab.active {
+        display: block;
+      }
+    }
+
+    .content::before {
+      content: "";
+      position: absolute;
+      top: 0.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 64px;
+      height: 5px;
+      border-radius: 5px;
+      background-color: rgba($color: $text-dark, $alpha: 0.3);
+    }
+  }
+}

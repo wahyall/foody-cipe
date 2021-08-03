@@ -1,0 +1,145 @@
+@import "../../color.scss";
+
+.jumbo-card {
+  height: 140px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+
+  @media (min-width: 420px) {
+    & {
+      height: 180px;
+    }
+  }
+
+  .recipe-img {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .recipe-img:hover {
+    & ~ .title {
+      margin-bottom: -62px;
+    }
+
+    & ~ .time {
+      transform: translate(-30px, -84px);
+    }
+  }
+
+  .time {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    margin: 0.75rem;
+    border-radius: 1rem;
+    background-color: rgba($color: $text-dark, $alpha: 0.3);
+    backdrop-filter: blur(3px);
+    transition: 0.3s;
+    position: relative;
+
+    span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: $bg-white;
+      margin-left: 0.5rem;
+    }
+
+    img {
+      width: 12px;
+    }
+  }
+
+  .title {
+    display: block;
+    text-decoration: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.25rem 0.75rem;
+    background-color: rgba($color: $text-dark, $alpha: 0.3);
+    backdrop-filter: blur(3px);
+    transition: 0.3s;
+    color: $text-light;
+
+    .name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .likes,
+    .rates {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        font-size: 14px;
+        line-height: 1em;
+        margin-left: 0.375rem;
+      }
+
+      img {
+        width: auto;
+        height: 12px;
+      }
+    }
+
+    .likes {
+      margin-right: 1.5rem;
+    }
+
+    .desc {
+      color: $text-light;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 0.75rem;
+      font-weight: 300;
+    }
+  }
+}
+
+@keyframes skeletonLoading {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.loading-jumbo-card {
+  height: 140px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  background-color: #d1ccc7;
+
+  @media (min-width: 420px) {
+    & {
+      height: 180px;
+    }
+  }
+
+  .shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      60deg,
+      rgba(0, 0, 0, 0) 30%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(0, 0, 0, 0) 70%
+    );
+
+    animation: skeletonLoading 1.2s infinite;
+  }
+}

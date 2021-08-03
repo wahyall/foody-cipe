@@ -1,0 +1,187 @@
+@import "../../color.scss";
+
+.save-recipes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color: $text-dark, $alpha: 0.5);
+  z-index: 2;
+  visibility: hidden;
+
+  .modal {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) translateY(100%);
+    width: 100%;
+    max-width: 480px;
+    max-height: 60vh;
+    background-color: $bg-white;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    transition: 0.3s;
+    border-radius: 12px 12px 0 0;
+
+    .modal-header {
+      border-bottom: 1px solid rgba($color: $text-dark, $alpha: 0.3);
+      padding: 0.75rem 1rem;
+      padding-right: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 105px;
+
+      .title {
+        font-weight: 600;
+        line-height: 1em;
+      }
+
+      .name {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: $grey;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .create {
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        color: $red;
+        padding: 0.5rem;
+        cursor: pointer;
+      }
+
+      .create:active {
+        background-color: rgba($color: $text-dark, $alpha: 0.1);
+      }
+    }
+
+    .modal-body {
+      overflow-y: auto;
+
+      .select-cookbook {
+        display: grid;
+        grid-template-columns: 20px 1fr 22px;
+        align-items: center;
+        padding: 1rem;
+        column-gap: 0.75rem;
+        color: $grey;
+
+        .cookbook-name {
+          font-weight: 500;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .amount {
+          font-size: 0.8rem;
+          line-height: 1em;
+        }
+
+        .checkbox {
+          width: 22px;
+          height: 22px;
+          border-radius: 4px;
+          border: 2px solid rgba($color: $text-dark, $alpha: 0.4);
+          margin-right: 1rem;
+          background-size: 0%;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        .checkbox.active {
+          background-color: $red;
+          border: none;
+          background-size: 70%;
+        }
+      }
+
+      .select-cookbook.active {
+        color: $text-dark;
+      }
+
+      .select-cookbook:active {
+        background-color: rgba($color: $text-dark, $alpha: 0.1);
+      }
+
+      .empty-cookbook {
+        padding: 1.5rem;
+        text-align: center;
+
+        .illustration {
+          width: 72px;
+          height: 72px;
+          background-color: $bg-bright;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 auto;
+
+          img {
+            width: auto;
+            height: 42px;
+            opacity: 0.5;
+          }
+        }
+
+        div {
+          // font-size: 0.8rem;
+          line-height: 1.2em;
+        }
+
+        div:nth-child(2) {
+          margin-top: 0.25rem;
+          margin-bottom: 0.75rem;
+          font-weight: 600;
+          color: $grey;
+        }
+
+        div:last-child {
+          color: $red;
+          font-weight: 600;
+          font-size: 0.8rem;
+          line-height: 1em;
+        }
+      }
+    }
+
+    .modal-footer {
+      border-top: 1px solid rgba($color: $text-dark, $alpha: 0.3);
+      padding: 0.75rem 1rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .done {
+        color: $bg-white;
+        background-color: $red;
+        border-radius: 4px;
+        padding: 0.375rem 1rem;
+        transition: 0.3s;
+      }
+
+      .done:active {
+        background-color: lighten($color: $red, $amount: 5);
+      }
+    }
+  }
+}
+
+.save-recipes.active {
+  visibility: visible;
+
+  .modal {
+    transform: translateX(-50%) translateY(0);
+  }
+}

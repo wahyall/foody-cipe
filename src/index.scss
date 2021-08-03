@@ -1,0 +1,52 @@
+@import "./color.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  font-size: 16px;
+}
+
+::placeholder {
+  color: $text-dark;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: $text-dark;
+}
+
+::-ms-input-placeholder {
+  color: $text-dark;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb {
+  width: 0;
+  height: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $bg-light;
+  color: $text-dark;
+}
+
+a,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}

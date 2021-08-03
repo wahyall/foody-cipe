@@ -1,0 +1,79 @@
+@import "../../color.scss";
+
+.confirm-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color: $text-dark, $alpha: 0.5);
+  z-index: 2;
+  visibility: hidden;
+
+  .modal {
+    width: 90%;
+    max-width: 420px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: $bg-white;
+    border-radius: 8px;
+    opacity: 0;
+    transition: 0.3s;
+    overflow: hidden;
+
+    .modal-header {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba($color: $text-dark, $alpha: 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: $bg-light;
+
+      .title {
+        font-weight: 600;
+      }
+
+      .close {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+
+    .modal-body {
+      padding: 1rem;
+    }
+
+    .modal-footer {
+      padding: 0.75rem 1rem;
+      border-top: 1px solid rgba($color: $text-dark, $alpha: 0.3);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: $bg-light;
+
+      .btn {
+        padding: 0.4rem 2rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+.confirm-modal.active {
+  visibility: visible;
+
+  .modal {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

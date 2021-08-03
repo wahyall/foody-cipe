@@ -1,0 +1,29 @@
+@import "../../../color.scss";
+
+.search-autocomplete {
+  .item {
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+    column-gap: 1rem;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+
+    img {
+      width: auto;
+      height: 16px;
+      opacity: 0.5;
+      justify-self: center;
+    }
+
+    img:last-child {
+      transform: rotate(-135deg);
+    }
+  }
+
+  .item:hover {
+    background-color: rgba($color: $text-dark, $alpha: 0.05);
+  }
+}

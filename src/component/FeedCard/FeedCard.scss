@@ -1,0 +1,124 @@
+@import "../../color.scss";
+
+.feed-card {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  .head {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+
+    .recipe-img {
+      width: auto;
+      height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .favorite {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+    }
+
+    .time {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      background-color: rgba($color: $text-dark, $alpha: 0.3);
+      backdrop-filter: blur(3px);
+      transition: 0.3s;
+      position: absolute;
+      bottom: 0.5rem;
+      left: 0.5rem;
+
+      span {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: $bg-white;
+        margin-left: 0.5rem;
+      }
+
+      img {
+        width: 12px;
+      }
+    }
+  }
+
+  .body {
+    .name {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-weight: 600;
+      line-height: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .likes,
+    .rates {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: auto;
+        height: 12px;
+        margin-right: 0.25rem;
+      }
+
+      div {
+        font-size: 0.9rem;
+        line-height: 0.9rem;
+      }
+    }
+
+    .likes {
+      margin-right: 1rem;
+    }
+  }
+}
+
+@keyframes skeletonLoading {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.loading-feed-card {
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  .head {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    background-color: #d1ccc7;
+
+    .shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0) 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(0, 0, 0, 0) 70%
+      );
+
+      animation: skeletonLoading 1.2s infinite;
+    }
+  }
+}

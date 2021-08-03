@@ -1,0 +1,250 @@
+import React from 'react';
+import './OpenCookbook.scss';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+// Component
+import ListCard from '../../../component/ListCard/ListCard';
+
+// Icon
+import back from '../../../icon/arrow-black.svg';
+import edit from '../../../icon/pencil-edit.svg';
+import sort from '../../../icon/sort.svg';
+import { useEffect } from 'react';
+
+class OpenCookbook extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: this.props.match.params.id,
+      sortMethod: 'latest',
+      isOpenSorting: false,
+      isDeleting: false,
+      isOnboarding: false
+    };
+    this.wrapper = React.createRef();
+  }
+
+  componentDidMount = () => {
+    const thisCookbook = this.props.cookbook.filter(item => item.id === this.state.id)[0];
+    this.setState({
+      name: thisCookbook.name,
+      desc: thisCookbook.desc,
+      data: thisCookbook.data,
+      isOnboarding: true
+    });
+
+    setTimeout(() => {
+      this.noticeDelete();
+    }, 200);
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    // Update cookbook data
+    const updatedCookbook = this.props.cookbook.filter(item => item.id === this.state.id)[0];
+    if (this.state.isDeleting) {
+      this.setState({
+        isDeleting: false
+      });
+
+      // Mengurutkan data setelah data diupdate / dihapus
+      // jika tidak dilakukan maka urutan data akan kembali default seperti di awal
+      this.sortCookbookData({withAnimate: false, data: updatedCookbook.data});
+    }
+
+    if (prevState.sortMethod !== this.state.sortMethod) {
+      this.sortCookbookData({withAnimate: true});
+    }
+  }
+
+  noticeDelete = () => {
+    // Memberitahu user tentang cara menghapus resep dari Cookbook
+    const noticeElement = this.wrapper.current.firstElementChild.firstElementChild;
+    noticeElement.style.animation = 'noticeDelete 1s ease forwards';
+
+    // Menghilangkan animasi saat user ingin menggeser resep
+    noticeElement.addEventListener('touchstart', function () {
+      this.style.animation = 'none';
+    })
+  }
+
+  sortCookbookData = ({ withAnimate, data }) => {
+    // Mulai animasi fade in out
+    if (withAnimate) {
+      this.fadeWrapperWhenSorting();
+    }
+
+    const tempData = data || [...this.state.data];
+    switch (this.state.sortMethod) {
+      case 'latest':
+        tempData.sort(this.sortFromLatest);
+        break;
+
+      case 'oldest':
+        tempData.sort(this.sortFromOldest);
+        break;
+
+      case 'ascending':
+        tempData.sort(this.sortAscending);
+        break;
+
+      case 'descending':
+        tempData.sort(this.sortDescending);
+        break;
+    
+      default:
+        break;
+    }
+    
+    if (withAnimate) {
+      setTimeout(() => {
+        // Menunggu 100ms agar animasi warpper berada pada opacity 0
+        this.setState({
+          data: tempData
+        });
+      }, 100);
+    } else {
+      this.setState({
+        data: tempData
+      });
+    }
+  }
+
+  sortFromLatest = (a, b) => {
+    return b.timeAdded - a.timeAdded;
+  }
+
+  sortFromOldest = (a, b) => {
+    return a.timeAdded - b.timeAdded;
+  }
+
+  sortAscending = (a, b) => {
+    return a.title < b.title ? -1 : 1;
+  }
+
+  sortDescending = (a, b) => {
+    return a.title > b.title ? -1 : 1;
+  }
+
+  fadeWrapperWhenSorting = () => {
+    // Membuat animasi fade in out pada wrapper saat mengubah sort method
+    const wrapper = this.wrapper.current;
+    wrapper.style.opacity = '0';
+    setTimeout(() => {
+      wrapper.style.opacity = '1';
+    }, 100);
+  }
+
+  render() {
+    if (!this.state.name) {
+      return null;
+    }
+
+    return (
+      <div id="open-cookbook">
+        <nav>
+          <div className="back"
+            onClick={() => this.props.history.push('/cookbook/')}>
+            <img src={back} alt="go back" />
+          </div>
+          <div className="name">{this.state.name}</div>
+          {this.state.id === 'favorite-recipes-1626578977045' ? null : (
+            <Link to={"/cookbook/" + this.state.id + "/edit"} className="edit">
+              <img src={edit} alt="edit cookbook" />
+            </Link>
+          )}
+        </nav>
+        <div className="jumbotron">
+          <div className="name">{this.state.name}</div>
+          <div className="desc">{this.state.desc}</div>
+        </div>
+        <div className="action">
+          <div className="amount">
+            {this.state.data.length} {this.state.data.length > 1 ? "Recipes" : "Recipe"}
+          </div>
+          <div className="dot"></div>
+          <div className="sort" tabIndex="0"
+            onFocus={() => this.setState({isOpenSorting: true})}
+            onBlur={() => setTimeout(() => this.setState({isOpenSorting: false}), 100)}>
+            <span>Sort</span>
+            <img src={sort} alt="sort recipe list" />
+          </div>
+          <div className={"select-sort" + (this.state.isOpenSorting ? " active" : "")}>
+            <SortOption key="latest added"
+              name="Time added (Latest)"
+              dataSort="latest"
+              activeSortMethod={this.state.sortMethod}
+              setSortMethod={() => this.setState({sortMethod: 'latest'})} />
+            <SortOption key="oldest added"
+              name="Time added (Oldest)"
+              dataSort="oldest"
+              activeSortMethod={this.state.sortMethod}
+              setSortMethod={() => this.setState({sortMethod: 'oldest'})} />
+            <SortOption key="ascending"
+              name="Alphabetical (A-Z)"
+              dataSort="ascending"
+              activeSortMethod={this.state.sortMethod}
+              setSortMethod={() => this.setState({sortMethod: 'ascending'})} />
+            <SortOption key="descending"
+              name="Alphabetical (Z-A)"
+              dataSort="descending"
+              activeSortMethod={this.state.sortMethod}
+              setSortMethod={() => this.setState({sortMethod: 'descending'})} />
+          </div>
+        </div>
+        <div className="wrapper" ref={this.wrapper}>
+          {this.state.data.map(recipe => (
+            <ListCard key={recipe.id} 
+              cookbookID={this.state.id}
+              recipe={recipe}
+              setIsDeleting={() => this.setState({isDeleting: true})} />
+          ))}
+        </div>
+        {/* {this.state.isOnboarding ? (
+          <Onboarding element="#open-cookbook .wrapper .list-card"
+            onClose={() => this.setState({isOnboarding: false})} />
+        ) : null} */}
+      </div>
+    )
+  }
+}
+
+const SortOption = (props) => {
+  return (
+    <div className={"sort-option" + (props.activeSortMethod === props.dataSort ? " active" : "")}
+      onClick={props.setSortMethod}>{props.name}</div>
+  )
+}
+
+const Onboarding = (props) => {
+  useEffect(() => {
+    const shownElement = document.querySelector(props.element);
+    shownElement.style.zIndex = '3';
+    setTimeout(() => {
+      shownElement.firstElementChild.style.transform = 'translate3d(-60px, 0px, 0px)';
+    }, 300);
+
+    return () => {
+      shownElement.style.zIndex = 'inherit';
+      shownElement.firstElementChild.style.transform = 'inherit';
+    };
+  }, []);
+
+  return (
+    <div className="onboarding">
+      <div className="content">
+        <div className="message">Swipe left to delete card</div>
+        <div className="btn"
+          onClick={props.onClose}>GOT IT</div>
+      </div>
+    </div>
+  )
+}
+
+const mapStateToProps = (state) => {
+  return {
+    cookbook: state.cookbook
+  }
+}
+
+export default connect(mapStateToProps)(OpenCookbook);

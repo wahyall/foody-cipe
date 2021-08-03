@@ -1,0 +1,53 @@
+@import "../../color.scss";
+
+#search {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  background-color: $bg-light;
+
+  .header {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    align-items: center;
+    column-gap: 0.5rem;
+    padding: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba($color: $text-dark, $alpha: 0.2);
+
+    .back {
+      width: auto;
+      height: 16px;
+      transform: rotateY(180deg);
+    }
+
+    .input-search {
+      background-color: $bg-white;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+      grid-template-columns: 1fr 40px;
+      border-radius: 4px;
+      overflow: hidden;
+      text-decoration: none;
+
+      input {
+        background-color: transparent;
+        padding: 0.5rem 1rem;
+        padding-right: 0;
+        width: 100%;
+        color: $text-dark;
+        border: none;
+        outline: none;
+      }
+
+      img {
+        width: auto;
+        height: 12px;
+      }
+    }
+  }
+}
