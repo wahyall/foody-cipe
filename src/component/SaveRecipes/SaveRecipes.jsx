@@ -10,7 +10,8 @@ import saveUnactive from '../../icon/save-cookbook-unactive.svg';
 class SaveRecipes extends React.Component {
   render() {
     return (
-      <div className={"save-recipes" + (this.props.isSavingRecipe ? " active" : "")}>
+      <div className={"save-recipes" + (this.props.isSavingRecipe ? " active" : "")}
+        onClick={(ev) => ev.target.classList.contains('save-recipes') && this.props.closeSavingRecipe()}>
         <div className="modal">
           <div className="modal-header">
             <div>
@@ -43,7 +44,10 @@ class SaveRecipes extends React.Component {
           </div>
           <div className="modal-footer">
             <div className="done"
-              onClick={this.props.closeSavingRecipe}>Done</div>
+              onClick={() => {
+                this.props.closeSavingRecipe();
+                this.props.dispatch({type: 'SHOW_TOAST', message: 'Cookbook updated!'})
+              }}>Done</div>
           </div>
         </div>
       </div>

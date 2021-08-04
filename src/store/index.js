@@ -5,6 +5,7 @@ import details from './details';
 import home from './home';
 import discover from './discover';
 import cookbook from './cookbook';
+import toast from './toast';
 
 // Reducer
 const reducer = combineReducers({
@@ -12,7 +13,8 @@ const reducer = combineReducers({
   details,
   home,
   discover,
-  cookbook
+  cookbook,
+  toast
 })
 
 // Store

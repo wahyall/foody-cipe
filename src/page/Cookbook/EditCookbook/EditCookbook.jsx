@@ -33,6 +33,7 @@ const EditCookbook = (props) => {
 
     // Setelah mengedit Cookbook, kemudian buka cookbook yang baru saja diedit
     props.history.push('/cookbook/' + newCookbookID);
+    dispatch({type: 'SHOW_TOAST', message: 'Cookbook updated!'})
   }
 
   return (

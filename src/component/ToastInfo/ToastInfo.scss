@@ -1,0 +1,58 @@
+@import "../../color.scss";
+
+@keyframes fadeDown {
+  from {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.toast-info {
+  width: 90%;
+  max-width: 420px;
+  position: fixed;
+  left: 50%;
+  bottom: 70px;
+  background-color: $text-dark;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  animation: fadeUp 0.2s forwards;
+
+  img {
+    width: auto;
+    height: 12px;
+  }
+
+  .message {
+    color: $text-light;
+    font-weight: 500;
+    margin-left: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .close {
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1em;
+    margin-left: auto;
+    color: $text-light;
+  }
+}

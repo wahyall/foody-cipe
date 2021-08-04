@@ -65,7 +65,10 @@ const CookbookItem = (props) => {
         confirmCopy="Delete"
         cancelCopy="Cancel"
         isOpenConfirm={isDeleting}
-        onConfirm={() => dispatch({type: 'DELETE_COOKBOOK', id: props.id})}
+        onConfirm={() => {
+          dispatch({type: 'DELETE_COOKBOOK', id: props.id});
+          dispatch({type: 'SHOW_TOAST', message: 'Cookbook deleted!'})
+        }}
         onCancel={() => setIsDeleting(false)}
         onClose={() => setIsDeleting(false)} />
     </div>

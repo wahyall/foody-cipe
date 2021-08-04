@@ -4,11 +4,15 @@ import { connect } from 'react-redux';
 import ContentEditable from 'react-contenteditable';
 
 class CreateCookbook extends React.Component {
-  state = {
-    name: '',
-    desc: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      desc: ''
+    }
+    this.inputName = React.createRef();
   }
-
+  
   createCookbook = (ev) => {
     ev.preventDefault();
 
@@ -28,11 +32,20 @@ class CreateCookbook extends React.Component {
 
     // Menutup modal
     this.props.closeCreatingCookbook();
+    this.props.dispatch({type: 'SHOW_TOAST', message: 'Recipe saved!'});
+
+    // Reset input value
+    this.inputName.current.value = '';
+    this.setState({
+      name: '',
+      desc: ''
+    });
   }
 
   render() {
     return (
-      <div className={"create-cookbook" + (this.props.isCreatingCookbook ? " active" : "")}>
+      <div className={"create-cookbook" + (this.props.isCreatingCookbook ? " active" : "")}
+        onClick={(ev) => ev.target.classList.contains('create-cookbook') && this.props.closeCreatingCookbook()}>
         <div className="modal">
           <form onSubmit={this.createCookbook}>
             <div className="modal-header">
@@ -43,7 +56,9 @@ class CreateCookbook extends React.Component {
             <div className="modal-body">
               <div className="input-group">
                 <label htmlFor="name">Name</label>
-                <input className="input" type="text" id="name" autoComplete="off"
+                <input className="input" type="text" id="name" autoComplete="off" 
+                  ref={this.inputName}
+                  defaultValue={this.state.name}
                   onInput={(ev) => this.setState({name: ev.target.value})} />
               </div>
               <div className="input-group">

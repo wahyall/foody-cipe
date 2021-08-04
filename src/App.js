@@ -6,6 +6,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { connect } from 'react-redux';
 
 // Page
 import Home from './page/Home/Home';
@@ -17,7 +18,7 @@ import Search from './page/Search/Search';
 // Component
 import SearchBox from './component/SearchBox/SearchBox';
 import BottomNav from './component/BottomNav/BottomNav';
-import SeeMore from './component/SeeMore/SeeMore';
+import ToastInfo from './component/ToastInfo/ToastInfo';
 
 class App extends React.Component {
   render() {
@@ -25,6 +26,7 @@ class App extends React.Component {
       <Router>
         {/* Global Component */}
         <SearchBox />
+        {this.props.toast.active && (<ToastInfo />)}
         <Route path="" render={props => (
           <BottomNav {...props} />
         )} />
@@ -61,4 +63,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    toast: state.toast
+  }
+}
+
+export default connect(mapStateToProps)(App);
