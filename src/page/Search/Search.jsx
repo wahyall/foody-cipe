@@ -34,16 +34,6 @@ class Search extends React.Component {
     }
   }
 
-  goBack = () => {
-    if (this.props.location.pathname.length > 8) {
-      console.log('Go back twice')
-      this.props.history.go(-2);
-    } else {
-      console.log('Go back once')
-      this.props.history.goBack();
-    }
-  }
-
   componentDidMount = () => {
     this.inputSearch.current.focus();
   }
@@ -53,7 +43,7 @@ class Search extends React.Component {
       <div id="search">
         <div className="header">
           <img className="back" src={arrow} alt="back"
-            onClick={this.goBack} />
+            onClick={() => this.props.history.push(JSON.parse(localStorage.getItem('prevPage')))} />
           <form onSubmit={(ev) => {
             ev.preventDefault();
             this.inputSearch.current.blur();
@@ -70,7 +60,7 @@ class Search extends React.Component {
                 onClick={() => {
                   this.inputSearch.current.value = '';
                   this.inputSearch.current.focus();
-                  this.setState({autocomplete: []});
+                  this.setState({autocomplete: [], keyword: ''});
                 }} />
             </Link>
           </form>
@@ -80,7 +70,11 @@ class Search extends React.Component {
             <Route exact path="/search" render={props => (
               <SearchAutocomplete {...props}
                 autocomplete={this.state.autocomplete}
-                onSetKeyword={(keyword) => this.inputSearch.current.value = keyword} />
+                setKeyword={(keyword) => this.inputSearch.current.value = keyword}
+                autocompleteToKeyword={(autocomplete) => {
+                  this.inputSearch.current.value = autocomplete;
+                  this.inputSearch.current.focus();
+                }} />
             )} />
             <Route exact path="/search/:keyword" render={props => (
               <SearchResults {...props} />

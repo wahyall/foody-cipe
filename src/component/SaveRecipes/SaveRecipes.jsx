@@ -31,14 +31,14 @@ class SaveRecipes extends React.Component {
               ))
             ) : (
               <div className="empty-cookbook">
-                <div className="illustration">
+                <div className="icon">
                   <img src={saveActive} alt="cookbook icon" />
                 </div>
-                <div>You don't have a Cookbook to save recipe</div>
+                <div>You don't have any Cookbook</div>
                 <div onClick={() => {
                   this.props.openCreatingCookbook();
                   this.props.closeSavingRecipe();
-                }}>Create New Cookbook</div>
+                }}>Create New</div>
               </div>
             )}
           </div>

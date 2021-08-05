@@ -10,11 +10,12 @@
     display: flex;
     align-items: center;
     margin-bottom: 0.75rem;
+    overflow-x: auto;
+    overflow-y: hidden;
 
     .tab-slider {
       display: flex;
       align-items: center;
-      overflow-x: auto;
 
       .tab-link {
         display: inline-block;

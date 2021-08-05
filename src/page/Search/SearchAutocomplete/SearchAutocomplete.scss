@@ -18,12 +18,12 @@
       justify-self: center;
     }
 
-    img:last-child {
+    .setter {
       transform: rotate(-135deg);
     }
   }
 
-  .item:hover {
+  .item:active {
     background-color: rgba($color: $text-dark, $alpha: 0.05);
   }
 }

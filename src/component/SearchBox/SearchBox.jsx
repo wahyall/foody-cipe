@@ -11,7 +11,7 @@ const SearchBox = () => {
 
   return (
     <Link to="/search" className="search-box"
-      onClick={() => dispatch({type: 'OPEN_SEARCH'})}>
+      onClick={() => localStorage.setItem('prevPage', JSON.stringify(window.location.pathname))}>
       <div>Search recipes ...</div>
       <img src={search} alt="search" />
     </Link>

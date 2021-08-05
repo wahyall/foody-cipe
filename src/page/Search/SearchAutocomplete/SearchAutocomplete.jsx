@@ -10,12 +10,13 @@ const SearchAutocomplete = (props) => {
   return (
     <div className="search-autocomplete">
       {props.autocomplete.map(item => (
-        <Link to={"/search/" + item.title} className="item"
-          onClick={() => props.onSetKeyword(item.title)}>
+        <div className="item">
           <img src={search} alt="search" />
-          <div>{item.title}</div>
-          <img src={arrow} alt="arrow" />
-        </Link>
+          <Link to={"/search/" + item.title}
+            onClick={() => props.setKeyword(item.title)}>{item.title}</Link>
+          <img src={arrow} alt="arrow" className="setter"
+            onClick={() => props.autocompleteToKeyword(item.title)} />
+        </div>
       ))}
     </div>
   )

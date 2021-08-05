@@ -14,7 +14,7 @@ const JumboCard = {
 
     return (
       <div className="jumbo-card">
-        <img src={props.img} alt="Image" className="recipe-img" />
+        <img src={props.img} alt="Image" className="recipe-img" draggable="false" />
         <div className="time">
           <img src={time} alt="Ready Time" />
           <span>{props.time} Min</span>

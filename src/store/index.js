@@ -1,6 +1,5 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import search from './search';
 import details from './details';
 import home from './home';
 import discover from './discover';
@@ -9,7 +8,6 @@ import toast from './toast';
 
 // Reducer
 const reducer = combineReducers({
-  search,
   details,
   home,
   discover,

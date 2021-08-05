@@ -1,4 +1,4 @@
-export const apiKey = '2ff78584d23f464681c5080db1a01601';
+export const apiKey = '17f1fa02519e41ca9febd509f54e8ca0';
 
 export const getInformation = async (id) => {
   return fetch(`https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${apiKey}`)

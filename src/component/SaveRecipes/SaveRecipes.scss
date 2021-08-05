@@ -117,7 +117,7 @@
         padding: 1.5rem;
         text-align: center;
 
-        .illustration {
+        .icon {
           width: 72px;
           height: 72px;
           background-color: $bg-bright;
@@ -130,26 +130,23 @@
           img {
             width: auto;
             height: 42px;
-            opacity: 0.5;
           }
         }
 
         div {
-          // font-size: 0.8rem;
           line-height: 1.2em;
         }
 
         div:nth-child(2) {
           margin-top: 0.25rem;
-          margin-bottom: 0.75rem;
+          margin-bottom: 0.5rem;
           font-weight: 600;
-          color: $grey;
         }
 
         div:last-child {
           color: $red;
           font-weight: 600;
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           line-height: 1em;
         }
       }

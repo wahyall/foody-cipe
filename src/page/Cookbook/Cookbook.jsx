@@ -1,16 +1,34 @@
 import React from 'react';
 import './Cookbook.scss';
 import { useSelector } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 // Component
 import CookbookItem from './CookbookItem/CookbookItem';
 import OpenCookbook from './OpenCookbook/OpenCookbook';
 import EditCookbook from './EditCookbook/EditCookbook';
 
+// Icon
+import empty from '../../icon/empty-cookbook.svg';
+
 const Cookbook = () => {
   const cookbook = useSelector(state => state.cookbook);
   const renderedCookbook = cookbook.filter(list => list.data.length > 0);
+
+  if(!renderedCookbook.length) {
+    return (
+      <div id="cookbook">
+        <div className="empty">
+          <img src={empty} alt="empty cookbook" />
+          <div className="title">Oops! It's Empty</div>
+          <div className="message">
+            Create a new cookbook by going to the recipe you like and make it
+          </div>
+          <Link to="/discover" className="btn">Let's Find Out</Link>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div id="cookbook">

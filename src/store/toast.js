@@ -1,6 +1,6 @@
 const initState = {
-  active: true,
-  message: "Recipe saved!"
+  active: false,
+  message: ""
 };
 
 export default function toast(state = initState, action) {

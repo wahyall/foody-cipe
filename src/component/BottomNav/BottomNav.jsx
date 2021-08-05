@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './BottomNav.scss';
@@ -16,7 +16,10 @@ const BottomNav = (props) => {
   const locationPath = pathname.slice((pathname.lastIndexOf('/') + 1));
   const [activePage, setActivePage] = useState(locationPath.length ? locationPath : 'home');
   const discover = useSelector(state => state.discover);
-  console.log(props.location.pathname)
+
+  useEffect(() => {
+    setActivePage(locationPath.length ? locationPath : 'home');
+  });
   
   return (
     <div className="bottom-nav">
