@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './BottomNav.scss';
@@ -14,7 +14,7 @@ import cookbookUnactive from '../../icon/cookbook-unactive.svg';
 const BottomNav = (props) => {
   const pathname = props.location.pathname;
   const locationPath = pathname.split('/');
-  const activePage = locationPath[1];
+  const activePage = locationPath[1].length ? locationPath : 'home';
 
   // Mengambil active category dari Discover, 
   // agar saat membuka Discover kembali dapat langsung menuju active category yang sebelumnya

@@ -5,7 +5,6 @@ import home from './home';
 import discover from './discover';
 import cookbook from './cookbook';
 import toast from './toast';
-import config from './config';
 import { getDate } from './libs';
 import { initLocalStorage, getLocalStorage } from './local_storage';
 import { updateSessionStorage } from './session_storage';
@@ -16,8 +15,7 @@ const reducer = combineReducers({
   home,
   discover,
   cookbook,
-  toast,
-  config
+  toast
 })
 
 // Store
