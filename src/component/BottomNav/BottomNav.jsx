@@ -14,7 +14,7 @@ import cookbookUnactive from '../../icon/cookbook-unactive.svg';
 const BottomNav = (props) => {
   const pathname = props.location.pathname;
   const locationPath = pathname.split('/');
-  const activePage = locationPath[1].length ? locationPath : 'home';
+  const activePage = locationPath[1].length ? locationPath[1] : 'home';
 
   // Mengambil active category dari Discover, 
   // agar saat membuka Discover kembali dapat langsung menuju active category yang sebelumnya
