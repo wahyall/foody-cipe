@@ -9,6 +9,12 @@ import JumboCard from '../JumboCard/JumboCard';
 // Icon
 import arrow from '../../icon/arrow-black.svg';
 
+// Storage
+import { getLocalStorage, updateLocalStorage } from '../../store/local_storage';
+import { getSessionStorage } from '../../store/session_storage';
+
+const isTomorrow = getSessionStorage('isTomorrow');
+
 class ContentSlider extends React.Component {
   constructor(props) {
     super(props);
@@ -16,13 +22,28 @@ class ContentSlider extends React.Component {
   }
 
   componentDidMount = () => {
-    // Jika data kosong maka ambil data resep (request API)
+    // Jika data kosong maka ambil data resep
+    const initData = getLocalStorage(this.props.name);
     if (!this.props.data.length) {
-      const getDataRecipe = homeDispatch[this.props.name];
-      this.props.dispatch(getDataRecipe());
+      if (!isTomorrow && (initData)) {
+        // Jika hari in adalah "besok" dan initData ada (tidak hilang atau rusak),
+        // maka ambil data resep yang sebelumnya sudah disimpan di localStorage
+        // (untuk mempercepat load data)
+        this.props.dispatch({type: 'SET_HOME_CONTENT', name: this.props.name, data: initData});
+      } else {
+        // Ambil data resep melalui Request API
+        const getDataRecipe = homeDispatch[this.props.name];
+        this.props.dispatch(getDataRecipe());
+      }
     }
 
     this.draggableOverflow();
+  }
+
+  componentDidUpdate = () => {
+    if (this.props.data.length) {
+      updateLocalStorage(this.props.name, this.props.data);
+    }
   }
 
   openSeeMore = () => {

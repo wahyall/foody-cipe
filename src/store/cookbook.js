@@ -1,11 +1,11 @@
-const initState = [
+const initState = JSON.parse(localStorage.getItem('cookbook')) || [
   {
     id: "favorite-recipes-1626578977045",
     name: "Favorite Recipes",
     desc: "",
     data: []
   }
-]
+];
 
 export default function cookbook(state = initState, action) {
   const cookbookIndex = state.map(list => list.id).indexOf(action.id);

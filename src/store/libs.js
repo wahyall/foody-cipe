@@ -46,7 +46,7 @@ export const homeDispatch = {
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
           const recipesData = data.recipes.filter(recipe => recipe.image);
-          return dispatch({type: 'SET_RECOMMENDATION', data: recipesData})
+          return dispatch({type: 'SET_HOME_CONTENT', name: 'recommendation', data: recipesData})
         })
     }
   },
@@ -55,7 +55,7 @@ export const homeDispatch = {
 
     return async dispatch => {
       const recipesData = await getInformation(popularRecipesID.join(','));
-      return dispatch({type: 'SET_POPULAR', data: recipesData})
+      return dispatch({type: 'SET_HOME_CONTENT', name: 'popular', data: recipesData})
     }
   },
   rated: () => {
@@ -63,7 +63,7 @@ export const homeDispatch = {
 
     return async dispatch => {
       const recipesData = await getInformation(ratedRecipesID.join(','));
-      return dispatch({type: 'SET_RATED', data: recipesData})
+      return dispatch({type: 'SET_HOME_CONTENT', name: 'rated', data: recipesData})
     }
   },
   recent: () => {
@@ -73,7 +73,7 @@ export const homeDispatch = {
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
           const recipesData = data.recipes.filter(recipe => recipe.image);
-          return dispatch({type: 'SET_RECENT', data: recipesData});
+          return dispatch({type: 'SET_HOME_CONTENT', name: 'recent', data: recipesData});
         })
     }
   },
@@ -90,7 +90,7 @@ export const homeDispatch = {
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
           const recipesData = data.recipes.filter(recipe => recipe.image);
-          return dispatch({type: 'SET_CATEGORY', data: recipesData})
+          return dispatch({type: 'SET_HOME_CONTENT', name: 'category', data: recipesData})
         })
     }
   }
@@ -174,4 +174,14 @@ export const discoverDispatch = {
         })
     }
   }
+}
+
+export const getDate = () => {
+  const currentYear = JSON.stringify(new Date().getFullYear()),
+    currentMonth = JSON.stringify(new Date().getMonth() + 1),
+    currentDate = JSON.stringify(new Date().getDate());
+
+  // Membuat format tanggal '20210806'
+  const date = `${currentYear}${currentMonth.length > 1 ? currentMonth : (0 + currentMonth)}${currentDate.length > 1 ? currentDate : (0 + currentDate)}`;
+  return date;
 }

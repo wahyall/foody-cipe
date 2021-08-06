@@ -35,7 +35,9 @@ class OpenCookbook extends React.Component {
     });
 
     setTimeout(() => {
-      this.noticeDelete();
+      // Jika di dalam localStorage terdapat data Cookbook, 
+      // berarti sebelumnya user sudah pernah dinotice
+      !localStorage.getItem('cookbook') && this.noticeDelete();
     }, 200);
   }
 

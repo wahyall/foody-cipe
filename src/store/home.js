@@ -1,12 +1,3 @@
-// const initState = {
-//   recommendation: [],
-//   popular: [],
-//   rated: [],
-//   recent: [],
-//   category: [],
-//   categoryName: ''
-// }
-
 const initState = {
   recommendation: {
     title: "Today's Recommendation",
@@ -32,6 +23,15 @@ const initState = {
 
 export default function home(state = initState, action) {
   switch (action.type) {
+    case 'SET_HOME_CONTENT':
+      return {
+        ...state,
+        [action.name]: {
+          ...state[action.name],
+          data: action.data
+        }
+      }
+
     case 'SET_RECOMMENDATION':
       return {
         ...state,
