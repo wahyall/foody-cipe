@@ -40,6 +40,14 @@ class Discover extends React.Component {
     this.draggableOverflow();
   }
 
+  componentDidUpdate = () => {
+    if (this.props.discover.activeCategory.name !== this.state.activeCategory) {
+      this.setState({
+        activeCategory: this.props.discover.activeCategory.name
+      });
+    }
+  }
+
   draggableOverflow = () => {
     const dragElem = this.tabCategories.current;
     if (dragElem.children[0].childElementCount <= 1) {

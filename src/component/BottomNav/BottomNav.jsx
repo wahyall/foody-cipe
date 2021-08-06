@@ -13,34 +13,30 @@ import cookbookUnactive from '../../icon/cookbook-unactive.svg';
 
 const BottomNav = (props) => {
   const pathname = props.location.pathname;
-  const locationPath = pathname.slice((pathname.lastIndexOf('/') + 1));
-  const [activePage, setActivePage] = useState(locationPath.length ? locationPath : 'home');
-  const discover = useSelector(state => state.discover);
+  const locationPath = pathname.split('/');
+  const activePage = locationPath[1];
 
-  useEffect(() => {
-    setActivePage(locationPath.length ? locationPath : 'home');
-  });
+  // Mengambil active category dari Discover, 
+  // agar saat membuka Discover kembali dapat langsung menuju active category yang sebelumnya
+  const discover = useSelector(state => state.discover);
   
   return (
     <div className="bottom-nav">
-      <Link to="/" className="nav-link"
-        onClick={() => setActivePage('home')}>
+      <Link to="/" className="nav-link">
         <BottomNavItem
           name="home"
           activePage={activePage}
           iconActive={homeActive}
           iconUnactive={homeUnactive} />
       </Link>
-      <Link to={"/discover" + discover.activeCategory.path} className="nav-link"
-        onClick={() => setActivePage('discover')}>
+      <Link to={"/discover" + discover.activeCategory.path} className="nav-link">
         <BottomNavItem
           name="discover"
           activePage={activePage}
           iconActive={discoverActive}
           iconUnactive={discoverUnactive} />
       </Link>
-      <Link to="/cookbook" className="nav-link"
-        onClick={() => setActivePage('cookbook')}>
+      <Link to="/cookbook" className="nav-link">
         <BottomNavItem
           name="cookbook"
           activePage={activePage}
