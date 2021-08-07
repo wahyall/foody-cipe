@@ -23,7 +23,7 @@ const store = createStore(reducer, applyMiddleware(thunk));
 store.subscribe(() => {
   // Update localStorage setiap kali redux store berubah
   const cookbook = store.getState().cookbook;
-  postLocalStorage('cookbook', JSON.stringify(cookbook));
+  postLocalStorage('cookbook', cookbook);
 });
 
 export default store;

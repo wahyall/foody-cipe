@@ -1,4 +1,6 @@
-const initState = JSON.parse(localStorage.getItem('cookbook')) || [
+import { getLocalStorage } from "./local_storage";
+
+const initState = getLocalStorage('cookbook') || [
   {
     id: "favorite-recipes-1626578977045",
     name: "Favorite Recipes",

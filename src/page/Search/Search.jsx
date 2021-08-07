@@ -14,6 +14,9 @@ import SearchResults from './SearchResults/SearchResults';
 // Libs
 import { apiKey } from '../../store/libs';
 
+// Storage
+import { getSessionStorage } from '../../store/session_storage';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -43,7 +46,7 @@ class Search extends React.Component {
       <div id="search">
         <div className="header">
           <img className="back" src={arrow} alt="back"
-            onClick={() => this.props.history.push(JSON.parse(localStorage.getItem('prevPage')))} />
+            onClick={() => this.props.history.push(getSessionStorage('prevPage') || '')} />
           <form onSubmit={(ev) => {
             ev.preventDefault();
             this.inputSearch.current.blur();

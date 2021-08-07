@@ -28,6 +28,7 @@ export default function home(state = initState, action) {
         ...state,
         [action.name]: {
           ...state[action.name],
+          title: action.title,
           data: action.data
         }
       }

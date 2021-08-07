@@ -11,5 +11,5 @@ export const postLocalStorage = (key, value) => (
 export const initLocalStorage = () => {
   // Membuat format tanggal '20210806'
   const tempDate = getDate();
-  localStorage.setItem('tempDate', JSON.stringify(tempDate));
+  localStorage.setItem('tempDate', tempDate);
 }

@@ -13,12 +13,15 @@ import arrow from '../../icon/arrow-black.svg';
 import { getDate } from '../../store/libs';
 
 // Storage
-import { getLocalStorage, postLocalStorage } from '../../store/local_storage';
+import { getLocalStorage, postLocalStorage, initLocalStorage } from '../../store/local_storage';
 
 // Cek apakah tanggal/hari sudah berganti
-const currentDate = getDate();
+const currentDate = Number(getDate());
 const tempDate = getLocalStorage('tempDate');
 const isTomorrow = (currentDate !== tempDate);
+if (isTomorrow) {
+  initLocalStorage();
+}
 
 class ContentSlider extends React.Component {
   constructor(props) {
@@ -27,14 +30,13 @@ class ContentSlider extends React.Component {
   }
 
   componentDidMount = () => {
-    // Jika data kosong maka ambil data resep
     const initData = getLocalStorage(this.props.name);
     if (!this.props.data.length) {
       if (!isTomorrow && (initData)) {
         // Jika hari in adalah "besok" dan initData ada (tidak hilang atau rusak),
         // maka ambil data resep yang sebelumnya sudah disimpan di localStorage
         // (untuk mempercepat load data)
-        this.props.dispatch({type: 'SET_HOME_CONTENT', name: this.props.name, data: initData});
+        this.props.dispatch({type: 'SET_HOME_CONTENT', name: this.props.name, title: initData.title, data: initData.data});
       } else {
         // Ambil data resep melalui Request API
         const getDataRecipe = homeDispatch[this.props.name];
@@ -47,7 +49,10 @@ class ContentSlider extends React.Component {
 
   componentDidUpdate = () => {
     if (this.props.data.length) {
-      postLocalStorage(this.props.name, this.props.data);
+      postLocalStorage(this.props.name, {
+        title: this.props.title,
+        data: this.props.data
+      });
     }
   }
 
@@ -112,6 +117,7 @@ class ContentSlider extends React.Component {
   }
   
   render() {
+    // console.log(this.props.name, this.props.data)
     const renderedRecipe = this.props.data.slice(0, 10);
     const recipeCards = renderedRecipe.map(recipe => (
       <JumboCard.Full
