@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import search from '../../icon/search.svg';
 
 // Storage
-import { postSessionStorage } from '../../store/session_storage';
+import { postSessionStorage } from '../../store/libs/storage';
 
 const SearchBox = () => {
   return (

@@ -5,7 +5,7 @@ import './SearchResults.scss';
 import FeedCard from '../../../component/FeedCard/FeedCard';
 
 // Libs
-import { searchRecipes } from '../../../store/libs';
+import { searchRecipes } from '../../../store/libs/request';
 
 // Icon
 import imageNotFound from '../../../icon/not-found.svg';

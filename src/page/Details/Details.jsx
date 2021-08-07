@@ -9,7 +9,7 @@ import SaveRecipes from '../../component/SaveRecipes/SaveRecipes';
 import CreateCookbook from '../../component/CreateCookbook/CreateCookbook';
 
 // Libs
-import { getInformation } from '../../store/libs';
+import { getInformation } from '../../store/libs/request';
 
 class Details extends React.Component {
   constructor(props) {

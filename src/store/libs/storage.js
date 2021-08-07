@@ -1,5 +1,6 @@
-import { getDate } from './libs';
+import { getDate } from './common';
 
+// Local Storage
 export const getLocalStorage = (key) => (
   JSON.parse(localStorage.getItem(key)) || null
 )
@@ -13,3 +14,12 @@ export const initLocalStorage = () => {
   const tempDate = getDate();
   localStorage.setItem('tempDate', tempDate);
 }
+
+// Session Storage
+export const getSessionStorage = (key) => (
+  JSON.parse(sessionStorage.getItem(key)) || null
+)
+
+export const postSessionStorage = (key, value) => (
+  sessionStorage.setItem(key, JSON.stringify(value))
+)

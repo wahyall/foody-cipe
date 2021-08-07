@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./local_storage";
+import { getLocalStorage } from '../libs/storage';
 
 const initState = getLocalStorage('cookbook') || [
   {

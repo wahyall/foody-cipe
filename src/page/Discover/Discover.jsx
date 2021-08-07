@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import { connect, useDispatch } from 'react-redux';
-import { discoverDispatch } from '../../store/libs';
+import { discoverDispatch } from '../../store/libs/request';
 
 // Component
 import FeedCard from '../../component/FeedCard/FeedCard';

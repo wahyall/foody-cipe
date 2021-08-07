@@ -28,59 +28,13 @@ export default function home(state = initState, action) {
         ...state,
         [action.name]: {
           ...state[action.name],
-          title: action.title,
-          data: action.data
-        }
-      }
-
-    case 'SET_RECOMMENDATION':
-      return {
-        ...state,
-        recommendation: {
-          ...state.recommendation,
-          data: action.data
-        }
-      }
-
-    case 'SET_POPULAR':
-      return {
-        ...state,
-        popular: {
-          ...state.popular,
-          data: action.data
-        }
-      }
-
-    case 'SET_RATED':
-      return {
-        ...state,
-        rated: {
-          ...state.rated,
-          data: action.data
-        }
-      }
-
-    case 'SET_RECENT':
-      return {
-        ...state,
-        recent: {
-          ...state.recent,
-          data: action.data
-        }
-      }
-
-    case 'SET_CATEGORY':
-      return {
-        ...state,
-        category: {
-          ...state.category,
           data: action.data
         }
       }
 
     case 'SET_CATEGORY_TITLE':
       // Mengubah string menjadi huruf kapital
-      const categoryTitle = action.name.split(' ')
+      const categoryTitle = action.title.split(' ')
         .map(str => str.replace(str[0], str[0].toUpperCase()))
         .join(' ');
       

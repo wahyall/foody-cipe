@@ -1,4 +1,4 @@
-export const apiKey = '2ff78584d23f464681c5080db1a01601';
+export const apiKey = '5c676c3605dd4442959e23e3bd5a6de6';
 
 export const getInformation = async (id) => {
   return fetch(`https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${apiKey}`)
@@ -83,7 +83,7 @@ export const homeDispatch = {
     const randomCategory = availableCategory[randomIndex];
     
     return dispatch => {
-      dispatch({type: 'SET_CATEGORY_TITLE', name: randomCategory});
+      dispatch({type: 'SET_CATEGORY_TITLE', title: randomCategory});
 
       fetch(`https://api.spoonacular.com/recipes/random?number=20&tags=${randomCategory}&apiKey=${apiKey}`)
         .then(response => response.json())
@@ -174,14 +174,4 @@ export const discoverDispatch = {
         })
     }
   }
-}
-
-export const getDate = () => {
-  const currentYear = JSON.stringify(new Date().getFullYear()),
-    currentMonth = JSON.stringify(new Date().getMonth() + 1),
-    currentDate = JSON.stringify(new Date().getDate());
-
-  // Membuat format tanggal '20210806'
-  const date = `${currentYear}${currentMonth.length > 1 ? currentMonth : (0 + currentMonth)}${currentDate.length > 1 ? currentDate : (0 + currentDate)}`;
-  return date;
 }

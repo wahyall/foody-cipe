@@ -1,11 +1,11 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import details from './details';
-import home from './home';
-import discover from './discover';
-import cookbook from './cookbook';
-import toast from './toast';
-import { postLocalStorage } from './local_storage';
+import details from './reducer/details';
+import home from './reducer/home';
+import discover from './reducer/discover';
+import cookbook from './reducer/cookbook';
+import toast from './reducer/toast';
+import { postLocalStorage } from './libs/storage';
 
 // Reducer
 const reducer = combineReducers({

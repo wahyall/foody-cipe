@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './DetailsTab.scss';
 
 // Libs
-import { getRecipeNutrition, getRecipeIngredients, getRecipeInstruction } from '../../../store/libs';
+import { getRecipeNutrition, getRecipeIngredients, getRecipeInstruction } from '../../../store/libs/request';
 
 const DetailsTab = {
   Description: (props) => {

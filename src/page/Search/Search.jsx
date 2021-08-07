@@ -12,10 +12,10 @@ import SearchAutocomplete from './SearchAutocomplete/SearchAutocomplete';
 import SearchResults from './SearchResults/SearchResults';
 
 // Libs
-import { apiKey } from '../../store/libs';
+import { apiKey } from '../../store/libs/request';
 
 // Storage
-import { getSessionStorage } from '../../store/session_storage';
+import { getSessionStorage } from '../../store/libs/storage';
 
 class Search extends React.Component {
   constructor(props) {
