@@ -4,7 +4,7 @@ export const getLocalStorage = (key) => (
   JSON.parse(localStorage.getItem(key)) || null
 )
 
-export const updateLocalStorage = (key, value) => (
+export const postLocalStorage = (key, value) => (
   localStorage.setItem(key, JSON.stringify(value))
 )
 

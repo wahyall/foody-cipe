@@ -9,11 +9,16 @@ import JumboCard from '../JumboCard/JumboCard';
 // Icon
 import arrow from '../../icon/arrow-black.svg';
 
-// Storage
-import { getLocalStorage, updateLocalStorage } from '../../store/local_storage';
-import { getSessionStorage } from '../../store/session_storage';
+// Libs
+import { getDate } from '../../store/libs';
 
-const isTomorrow = getSessionStorage('isTomorrow');
+// Storage
+import { getLocalStorage, postLocalStorage } from '../../store/local_storage';
+
+// Cek apakah tanggal/hari sudah berganti
+const currentDate = getDate();
+const tempDate = getLocalStorage('tempDate');
+const isTomorrow = (currentDate !== tempDate);
 
 class ContentSlider extends React.Component {
   constructor(props) {
@@ -42,7 +47,7 @@ class ContentSlider extends React.Component {
 
   componentDidUpdate = () => {
     if (this.props.data.length) {
-      updateLocalStorage(this.props.name, this.props.data);
+      postLocalStorage(this.props.name, this.props.data);
     }
   }
 
