@@ -66,5 +66,5 @@ export const checkIsTomorrow = () => {
   const tempDate = getLocalStorage('tempDate');
   const thisDate = getThisDate();
   
-  return thisDate === tempDate;
+  return thisDate !== tempDate;
 }
