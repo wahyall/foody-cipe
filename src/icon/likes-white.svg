@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="9.233" viewBox="0 0 10 9.233">
   <g id="Icon_ionic-md-thumbs-up" data-name="Icon ionic-md-thumbs-up" transform="translate(0)">
-    <path id="Path_3" data-name="Path 3" d="M12.136,13.733h4.009a.856.856,0,0,0,.8-.563l1.331-3.256a.946.946,0,0,0,.061-.337V8.65a1.051,1.051,0,0,0-.881-1.072H14.674l.42-1.96.014-.144a.708.708,0,0,0-.193-.488L14.443,4.5,11.506,7.561a.941.941,0,0,0-.256.652v4.616A.893.893,0,0,0,12.136,13.733Z" transform="translate(-8.333 -4.5)" fill="#fffdfc"/>
-    <path id="Path_4" data-name="Path 4" d="M3.375,15.75H5.042v5.833H3.375Z" transform="translate(-3.375 -12.35)" fill="#fffdfc"/>
+    <path id="Path_3" data-name="Path 3" d="M12.136,13.733h4.009a.856.856,0,0,0,.8-.563l1.331-3.256a.946.946,0,0,0,.061-.337V8.65a1.051,1.051,0,0,0-.881-1.072H14.674l.42-1.96.014-.144a.708.708,0,0,0-.193-.488L14.443,4.5,11.506,7.561a.941.941,0,0,0-.256.652v4.616A.893.893,0,0,0,12.136,13.733Z" transform="translate(-8.333 -4.5)" fill="#fbf9f9"/>
+    <path id="Path_4" data-name="Path 4" d="M3.375,15.75H5.042v5.833H3.375Z" transform="translate(-3.375 -12.35)" fill="#fbf9f9"/>
   </g>
 </svg>
