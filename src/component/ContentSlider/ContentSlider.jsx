@@ -31,7 +31,7 @@ class ContentSlider extends React.Component {
         // Jika hari in adalah "besok" dan initData ada (tidak hilang atau rusak),
         // maka ambil data resep yang sebelumnya sudah disimpan di localStorage
         // (untuk mempercepat load data)
-        this.props.dispatch({type: 'SET_HOME_CONTENT', name: this.props.name, data: initData.data});
+        this.props.dispatch({type: 'SET_HOME_CONTENT', name: this.props.name, title: initData.title, data: initData.data});
       } else {
         // Ambil data resep melalui Request API
         const getDataRecipe = homeDispatch[this.props.name];

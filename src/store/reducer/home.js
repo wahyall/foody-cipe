@@ -24,10 +24,15 @@ const initState = {
 export default function home(state = initState, action) {
   switch (action.type) {
     case 'SET_HOME_CONTENT':
+      // Jika action berisi title maka ambil title itu dan gunakan sebagai title baru,
+      // jika tidak maka pakai title dari state yang sudah ada sebelumnya
+      const title = action.title || state[action.name].title;
+
       return {
         ...state,
         [action.name]: {
           ...state[action.name],
+          title,
           data: action.data
         }
       }
