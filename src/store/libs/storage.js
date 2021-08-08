@@ -1,4 +1,4 @@
-import { getDate } from './common';
+import { getThisDate } from './common';
 
 // Local Storage
 export const getLocalStorage = (key) => (
@@ -11,7 +11,7 @@ export const postLocalStorage = (key, value) => (
 
 export const initLocalStorage = () => {
   // Membuat format tanggal '20210806'
-  const tempDate = getDate();
+  const tempDate = getThisDate();
   localStorage.setItem('tempDate', tempDate);
 }
 

@@ -10,15 +10,10 @@ import JumboCard from '../JumboCard/JumboCard';
 import arrow from '../../icon/arrow-black.svg';
 
 // Libs
-import { getDate } from '../../store/libs/common';
-
-// Storage
+import { checkIsTomorrow } from '../../store/libs/common';
 import { getLocalStorage, postLocalStorage, initLocalStorage } from '../../store/libs/storage';
 
-// Cek apakah tanggal/hari sudah berganti
-const currentDate = Number(getDate());
-const tempDate = getLocalStorage('tempDate');
-const isTomorrow = (currentDate !== tempDate);
+const isTomorrow = checkIsTomorrow();
 if (isTomorrow) {
   initLocalStorage();
 }

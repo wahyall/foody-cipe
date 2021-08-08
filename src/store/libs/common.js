@@ -1,3 +1,5 @@
+import { getLocalStorage } from './storage';
+
 export const draggableOverflow = (elem) => {
   if (elem.children[0].childElementCount <= 1) {
       return;
@@ -49,12 +51,20 @@ export const draggableOverflow = (elem) => {
   elem.addEventListener('mousedown', mouseDownHandler);
 }
 
-export const getDate = () => {
+export const getThisDate = () => {
   const currentYear = JSON.stringify(new Date().getFullYear()),
     currentMonth = JSON.stringify(new Date().getMonth() + 1),
     currentDate = JSON.stringify(new Date().getDate());
-
+  
   // Membuat format tanggal '20210806'
-  const date = `${currentYear}${currentMonth.length > 1 ? currentMonth : (0 + currentMonth)}${currentDate.length > 1 ? currentDate : (0 + currentDate)}`;
-  return date;
+  const thisDate = Number(`${currentYear}${currentMonth.length > 1 ? currentMonth : (0 + currentMonth)}${currentDate.length > 1 ? currentDate : (0 + currentDate)}`);
+
+  return thisDate;
+}
+
+export const checkIsTomorrow = () => {
+  const tempDate = getLocalStorage('tempDate');
+  const thisDate = getThisDate();
+  
+  return thisDate === tempDate;
 }
