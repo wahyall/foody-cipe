@@ -12,6 +12,7 @@ import arrow from '../../icon/arrow-black.svg';
 // Libs
 import { checkIsTomorrow } from '../../store/libs/common';
 import { getLocalStorage, postLocalStorage, initLocalStorage } from '../../store/libs/storage';
+import { draggableOverflow } from '../../store/libs/common';
 
 const isTomorrow = checkIsTomorrow();
 if (isTomorrow) {
@@ -39,7 +40,7 @@ class ContentSlider extends React.Component {
       }
     }
 
-    this.draggableOverflow();
+    draggableOverflow(this.slider.current);
   }
 
   componentDidUpdate = () => {
@@ -57,58 +58,6 @@ class ContentSlider extends React.Component {
       title: this.props.title,
       data: this.props.data
     })
-  }
-
-  draggableOverflow = () => {
-    const dragElem = this.slider.current;
-    if (dragElem.children[0].childElementCount <= 1) {
-        return;
-    }
-
-    let dragElemPos = {
-        top: 0,
-        left: 0,
-        x: 0,
-        y: 0
-    };
-
-    const mouseDownHandler = (e) => {
-        dragElem.style.userSelect = 'none';
-
-        dragElemPos = {
-          left: dragElem.scrollLeft,
-          top: dragElem.scrollTop,
-          // Get the current mouse position
-          x: e.clientX,
-          y: e.clientY,
-        };
-
-        document.addEventListener('mousemove', mouseMoveHandler);
-        document.addEventListener('mouseup', mouseUpHandler);
-    };
-
-    const mouseMoveHandler = (e) => {
-        // How far the mouse has been moved
-        const dx = e.clientX - dragElemPos.x;
-        const dy = e.clientY - dragElemPos.y;
-
-        // Scroll the element
-        dragElem.scrollTop = dragElemPos.top - dy;
-        dragElem.scrollLeft = dragElemPos.left - dx;
-        dragElem.style.cursor = 'grabbing';
-    };
-
-    const mouseUpHandler = () => {
-        dragElem.style.removeProperty('user-select');
-
-        document.removeEventListener('mousemove', mouseMoveHandler);
-        document.removeEventListener('mouseup', mouseUpHandler);
-
-        dragElem.style.cursor = 'grab';
-    };
-
-    // Attach the handler
-    dragElem.addEventListener('mousedown', mouseDownHandler);
   }
   
   render() {

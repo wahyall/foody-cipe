@@ -11,6 +11,9 @@ import { discoverDispatch } from '../../store/libs/request';
 // Component
 import FeedCard from '../../component/FeedCard/FeedCard';
 
+// Libs
+import { draggableOverflow } from '../../store/libs/common';
+
 class Discover extends React.Component {
   constructor(props) {
     super(props);
@@ -37,7 +40,7 @@ class Discover extends React.Component {
       }
     });
 
-    this.draggableOverflow();
+    draggableOverflow(this.tabCategories.current);
   }
 
   componentDidUpdate = () => {
@@ -46,58 +49,6 @@ class Discover extends React.Component {
         activeCategory: this.props.discover.activeCategory.name
       });
     }
-  }
-
-  draggableOverflow = () => {
-    const dragElem = this.tabCategories.current;
-    if (dragElem.children[0].childElementCount <= 1) {
-        return;
-    }
-
-    let dragElemPos = {
-        top: 0,
-        left: 0,
-        x: 0,
-        y: 0
-    };
-
-    const mouseDownHandler = (e) => {
-        dragElem.style.userSelect = 'none';
-
-        dragElemPos = {
-          left: dragElem.scrollLeft,
-          top: dragElem.scrollTop,
-          // Get the current mouse position
-          x: e.clientX,
-          y: e.clientY,
-        };
-
-        document.addEventListener('mousemove', mouseMoveHandler);
-        document.addEventListener('mouseup', mouseUpHandler);
-    };
-
-    const mouseMoveHandler = (e) => {
-        // How far the mouse has been moved
-        const dx = e.clientX - dragElemPos.x;
-        const dy = e.clientY - dragElemPos.y;
-
-        // Scroll the element
-        dragElem.scrollTop = dragElemPos.top - dy;
-        dragElem.scrollLeft = dragElemPos.left - dx;
-        dragElem.style.cursor = 'grabbing';
-    };
-
-    const mouseUpHandler = () => {
-        dragElem.style.removeProperty('user-select');
-
-        document.removeEventListener('mousemove', mouseMoveHandler);
-        document.removeEventListener('mouseup', mouseUpHandler);
-
-        dragElem.style.cursor = 'grab';
-    };
-
-    // Attach the handler
-    dragElem.addEventListener('mousedown', mouseDownHandler);
   }
 
   render() {
