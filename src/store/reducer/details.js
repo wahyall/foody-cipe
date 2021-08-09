@@ -8,6 +8,13 @@ export default function details(state = initState, action) {
         ...state,
         data: action.data
       }
+    
+      case 'CLOSE_DETAILS':
+        // Clear data
+        return {
+          ...state,
+          data: {}
+        }
   
     default:
       return state;

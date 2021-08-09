@@ -51,6 +51,8 @@ class Details extends React.Component {
     } else {
       this.props.history.goBack();
     }
+
+    this.props.dispatch({type: 'CLOSE_DETAILS'})
   }
 
   componentDidMount = async () => {
