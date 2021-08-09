@@ -82,7 +82,7 @@ const EditCookbook = (props) => {
         title="Unsaved Changes"
         message="Leave this page without saving changes?"
         confirmCopy="Save"
-        cancelCopy="Leave"
+        cancelCopy="Discard"
         isOpenConfirm={confirmBeforeSaving}
         onConfirm={dispatchEditCookbook}
         onCancel={() => props.history.goBack()}
