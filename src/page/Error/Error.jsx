@@ -12,7 +12,6 @@ const Error = () => {
         <div className="title">Sorry for this incident</div>
         <p className="message">Our daily quota has reached the limit</p>
         <p className="message">But don't worry, you can find your favorite recipe tomorrow</p>
-        <div className="tip">See you tomorrow</div>
       </div>
     </div>
   )
