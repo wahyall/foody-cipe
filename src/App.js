@@ -14,6 +14,7 @@ import Discover from './page/Discover/Discover';
 import Cookbook from './page/Cookbook/Cookbook';
 import Details from './page/Details/Details';
 import Search from './page/Search/Search';
+import Error from './page/Error/Error';
 
 // Component
 import SearchBox from './component/SearchBox/SearchBox';
@@ -22,6 +23,10 @@ import ToastInfo from './component/ToastInfo/ToastInfo';
 
 class App extends React.Component {
   render() {
+    return (
+      <Error />
+    )
+    
     return (
       <Router>
         {/* Global Component */}
