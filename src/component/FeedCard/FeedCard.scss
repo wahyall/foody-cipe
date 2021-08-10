@@ -122,3 +122,8 @@
     }
   }
 }
+
+.feed-card:last-child,
+.loading-feed-card:last-child {
+  margin-bottom: 2rem;
+}

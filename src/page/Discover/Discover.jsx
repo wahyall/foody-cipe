@@ -24,7 +24,7 @@ class Discover extends React.Component {
         {name: 'Side Dish', path: '/side-dish'},
         {name: 'Appetizer', path: '/appetizer'},
         {name: 'Salad', path: '/salad'},
-        {name: 'Bread', path: '/bread'},
+        {name: 'Drink', path: '/drink'},
         {name: 'Soup', path: '/soup'}
       ],
       activeCategory: this.props.discover.activeCategory.name
@@ -83,8 +83,8 @@ class Discover extends React.Component {
           <Route exact path="/discover/salad" key="salad" render={props => (
             <DiscoverContent name="salad" data={this.props.discover.salad} {...props} />
           )} />
-          <Route exact path="/discover/bread" key="bread" render={props => (
-            <DiscoverContent name="bread" data={this.props.discover.bread} {...props} />
+          <Route exact path="/discover/drink" key="drink" render={props => (
+            <DiscoverContent name="drink" data={this.props.discover.drink} {...props} />
           )} />
           <Route exact path="/discover/soup" key="soup" render={props => (
             <DiscoverContent name="soup" data={this.props.discover.soup} {...props} />

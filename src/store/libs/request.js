@@ -1,6 +1,6 @@
 import store from "..";
 
-export const apiKey = '5c676c3605dd4442959e23e3bd5a6de6';
+export const apiKey = '17f1fa02519e41ca9febd509f54e8ca0';
 
 export const getInformation = async (id) => {
   return fetch(`https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${apiKey}`)
@@ -167,14 +167,14 @@ export const discoverDispatch = {
         .catch(() => store.dispatch({type: 'SET_ERROR'}))
     }
   },
-  bread: () => {
+  drink: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=bread&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=drink&apiKey=${apiKey}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
           const recipesData = data.recipes.filter(recipe => recipe.image);
-          return dispatch({type: 'SET_DATA_DISCOVER', name: 'bread', data: recipesData});
+          return dispatch({type: 'SET_DATA_DISCOVER', name: 'drink', data: recipesData});
         })
         .catch(() => store.dispatch({type: 'SET_ERROR'}))
     }
