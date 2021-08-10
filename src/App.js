@@ -21,53 +21,51 @@ import SearchBox from './component/SearchBox/SearchBox';
 import BottomNav from './component/BottomNav/BottomNav';
 import ToastInfo from './component/ToastInfo/ToastInfo';
 
-class App extends React.Component {
-  render() {
-    if (this.props.error) {
-      return (
-        <Error />
-      )
-    }
-
+const App = (props) => {
+  if (props.error) {
     return (
-      <Router>
-        {/* Global Component */}
-        <SearchBox />
-        {this.props.toast.active && (<ToastInfo />)}
-        <Route path="" render={props => (
-          <BottomNav {...props} />
-        )} />
-
-        <Switch>
-          {/* Home*/}
-          <Route exact path="/" render={props => (
-            <Home {...props} />
-          )} />
-
-          {/* Discover */}
-          <Route path="/discover" render={props => (
-            <Discover {...props} />
-          )} />
-
-          {/* Cookbook */}
-          <Route path="/cookbook" render={props => (
-            <Cookbook {...props} />
-          )} />
-
-          {/* Details */}
-          <Route path="/details/:id" render={props => (
-            <Details {...props} />
-          )} />
-
-          {/* Search */}
-          <Route path="/search" render={props => (
-            <Search {...props} />
-          )} />
-            
-        </Switch>
-      </Router>
+      <Error />
     )
   }
+
+  return (
+    <Router>
+      {/* Global Component */}
+      <SearchBox />
+      {props.toast.active && (<ToastInfo />)}
+      <Route path="" render={props => (
+        <BottomNav {...props} />
+      )} />
+
+      <Switch>
+        {/* Home*/}
+        <Route exact path="/" render={props => (
+          <Home {...props} />
+        )} />
+
+        {/* Discover */}
+        <Route path="/discover" render={props => (
+          <Discover {...props} />
+        )} />
+
+        {/* Cookbook */}
+        <Route path="/cookbook" render={props => (
+          <Cookbook {...props} />
+        )} />
+
+        {/* Details */}
+        <Route path="/details/:id" render={props => (
+          <Details {...props} />
+        )} />
+
+        {/* Search */}
+        <Route path="/search" render={props => (
+          <Search {...props} />
+        )} />
+          
+      </Switch>
+    </Router>
+  )
 }
 
 const mapStateToProps = (state) => {
