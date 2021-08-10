@@ -2,6 +2,7 @@ import React from 'react';
 import './Search.scss';
 import { Switch, Route } from 'react-router';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // Icon
 import arrow from '../../icon/arrow-black.svg';
@@ -33,7 +34,7 @@ class Search extends React.Component {
     if (keyword.length >= 3) {
       fetch(`https://api.spoonacular.com/recipes/autocomplete?number=6&query=${keyword}&apiKey=${apiKey}`)
         .then(response => response.json())
-        .then(data => this.setState({autocomplete: data}))
+        .then(data => data.code === 402 ? this.props.dispatch({type: 'SET_ERROR'}) : this.setState({autocomplete: data}))
     }
   }
 
@@ -89,4 +90,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default connect(null)(Search);
