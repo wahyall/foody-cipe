@@ -23,10 +23,12 @@ import ToastInfo from './component/ToastInfo/ToastInfo';
 
 class App extends React.Component {
   render() {
-    return (
-      <Error />
-    )
-    
+    if (this.props.error) {
+      return (
+        <Error />
+      )
+    }
+
     return (
       <Router>
         {/* Global Component */}
@@ -70,7 +72,8 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    toast: state.toast
+    toast: state.toast,
+    error: state.error
   }
 }
 
