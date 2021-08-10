@@ -22,7 +22,7 @@ const Cookbook = () => {
           <img src={empty} alt="empty cookbook" />
           <div className="title">Oops! It's Empty</div>
           <div className="message">
-            Create a new cookbook by going to the recipe you like and make it
+            Create a new cookbook by going to the recipe you like and create it
           </div>
           <Link to="/discover" className="btn">Let's Find Out</Link>
         </div>

@@ -50,7 +50,7 @@ const CookbookItem = (props) => {
         <div className="option">
           <div className="icon" htmlFor="focus" tabIndex="0"
             onFocus={() => setIsShowMenu(true)}
-            onBlur={() => setTimeout(() => setIsShowMenu(false), 10)}>
+            onBlur={() => setTimeout(() => setIsShowMenu(false), 100)}>
             <img src={dotsMenu} alt="cookbook menu icon" />
           </div>
           <div className={"menu" + (isShowMenu ? " active" : "")}>
