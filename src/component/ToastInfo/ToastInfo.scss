@@ -49,11 +49,12 @@
   }
 
   .close {
-    font-weight: 600;
-    font-size: 1.5rem;
-    line-height: 1em;
     margin-left: auto;
-    color: $text-light;
     cursor: pointer;
+
+    img {
+      width: auto;
+      height: 12px;
+    }
   }
 }

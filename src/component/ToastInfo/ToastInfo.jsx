@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Icon
 import check from '../../icon/check-thin.svg';
+import close from '../../icon/close-white.svg';
 
 const ToastInfo = () => {
   const elem = useRef(null);
@@ -40,7 +41,9 @@ const ToastInfo = () => {
           setTimeout(() => {
             dispatch({type: 'HIDE_TOAST'});
           }, 200);
-        }}>×</div>
+        }}>
+          <img src={close} />
+      </div>
     </div>
   )
 }

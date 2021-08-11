@@ -18,7 +18,6 @@ class SearchResults extends React.Component {
   }
 
   componentDidMount = async () => {
-    console.log(this.state, this.props);
     const data = await searchRecipes(this.state.keyword);
     const isNotFound = !data.length ? true : false;
     this.setState({ data, isNotFound });

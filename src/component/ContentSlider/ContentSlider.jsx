@@ -61,7 +61,6 @@ class ContentSlider extends React.Component {
   }
   
   render() {
-    // console.log(this.props.name, this.props.data)
     const renderedRecipe = this.props.data.slice(0, 10);
     const recipeCards = renderedRecipe.map(recipe => (
       <JumboCard.Full
