@@ -33,7 +33,7 @@ class Search extends React.Component {
     this.props.dispatch({type: 'SET_SEARCH_KEYWORD', keyword})
 
     if (keyword.length >= 3) {
-      fetch(`https://api.spoonacular.com/recipes/autocomplete?number=6&query=${keyword}&apiKey=${apiKey[2]}`)
+      fetch(`https://api.spoonacular.com/recipes/autocomplete?number=6&query=${keyword}&apiKey=${apiKey[1]}`)
         .then(response => response.json())
         .then(data => data.code === 402 ? this.props.dispatch({type: 'SET_ERROR'}) : this.setState({autocomplete: data}))
     }
@@ -47,6 +47,12 @@ class Search extends React.Component {
   }
 
   componentDidUpdate = () => {
+    // Mengecek apakah user langsung menuju halaman pencarian,
+    // user langsung menuju halaman dengan url /search/:keyword
+    if (this.props.search.isDirectSearch) {
+      this.inputSearch.current.blur();
+      this.props.dispatch({type: 'SET_DIRECT_SEARCH', keyword: this.props.search.keyword});
+    }
     this.inputSearch.current.value = this.props.search.keyword;
   }
 
@@ -66,7 +72,7 @@ class Search extends React.Component {
             ev.preventDefault();
             this.inputSearch.current.blur();
             this.props.history.push("/search/" + this.inputSearch.current.value);
-            searchRecipes(this.inputSearch.current.value);
+            this.props.dispatch(searchRecipes(this.inputSearch.current.value));
           }}>
             <Link to="/search" className="input-search"
               onClick={() => this.props.dispatch({type: 'CLEAR_SEARCH', clear: 'results'})}>

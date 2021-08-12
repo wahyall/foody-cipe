@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchResults.scss';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 
 // Component
 import FeedCard from '../../../component/FeedCard/FeedCard';
@@ -11,60 +11,58 @@ import { searchRecipes } from '../../../store/libs/request';
 // Icon
 import imageNotFound from '../../../icon/not-found.svg';
 
-class SearchResults extends React.Component {
-  state = {
-    keyword: this.props.match.params.keyword,
-    isNotFound: this.props.search.isNotFound
-  }
+const SearchResults = (props) => {
+  const dispatch = useDispatch();
+  const [keyword, setKeyword] = useState(props.search.keyword);
 
-  componentDidMount = async () => {
-    if (!this.props.search.keyword.length) {
-      const data = await searchRecipes(this.state.keyword);
-      const isNotFound = !data.length ? true : false;
-      this.setState({ data, isNotFound });
+  useEffect(() => {
+    if (!keyword.length) {
+      const newKeyword = props.match.params.keyword;
+      setKeyword(newKeyword);
+
+      dispatch({type: 'SET_DIRECT_SEARCH', keyword: newKeyword});
+      dispatch(searchRecipes(newKeyword));
     }
-  }
+  }, []);
 
-  render() {    
-    const recipeCards = this.props.search.results.map(recipe => (
-      <FeedCard.Full
-        key={recipe.id}
-        id={recipe.id}
-        name={recipe.title}
-        likes={recipe.aggregateLikes}
-        rates={recipe.spoonacularScore}
-        time={recipe.readyInMinutes}
-        img={recipe.image}
-        fullData={recipe} />
-    ))
+  const recipeCards = props.search.results.map(recipe => (
+    <FeedCard.Full
+      key={recipe.id}
+      id={recipe.id}
+      name={recipe.title}
+      likes={recipe.aggregateLikes}
+      rates={recipe.spoonacularScore}
+      time={recipe.readyInMinutes}
+      img={recipe.image}
+      fullData={recipe} />
+  ))
 
-    const loadingCards = [
-      <FeedCard.Loading />,
-      <FeedCard.Loading />,
-      <FeedCard.Loading />,
-      <FeedCard.Loading />,
-      <FeedCard.Loading />,
-      <FeedCard.Loading />
-    ]
+  const loadingCards = [
+    <FeedCard.Loading />,
+    <FeedCard.Loading />,
+    <FeedCard.Loading />,
+    <FeedCard.Loading />,
+    <FeedCard.Loading />,
+    <FeedCard.Loading />
+  ]
 
-    const notFound = (
-      <div className="not-found">
-        <img src={imageNotFound} alt="Not Found" />
-        <div>No result found for <span>"{this.state.keyword}"</span></div>
-      </div>
-    )
+  const notFound = (
+    <div className="not-found">
+      <img src={imageNotFound} alt="Not Found" />
+      <div>No result found for <span>"{keyword}"</span></div>
+    </div>
+  )
 
-    return (
-      <div className={"search-results" + (this.props.search.isNotFound ? " not-found" : "")}>
-        {/* 1. Cek apakah data memiliki isi */}
-        {/* jika "True" tampilkan <recipeCards />, jika tidak lanjut ke nomor 2 */}
+  return (
+    <div className={"search-results" + (props.search.isNotFound ? " not-found" : "")}>
+      {/* 1. Cek apakah data memiliki isi */}
+      {/* jika "True" tampilkan <recipeCards />, jika tidak lanjut ke nomor 2 */}
 
-        {/* 2. Cek apakah pencarian tidak mengembalikan data, alias Not Found */}
-        {/* jika "True" tampilkan <notFound />, jika tidak tampilkan <loadingCards /> */}
-        {this.props.search.results.length ? recipeCards : (this.props.search.isNotFound ? notFound : loadingCards)}
-      </div>
-    )
-  }
+      {/* 2. Cek apakah pencarian tidak mengembalikan data, alias Not Found */}
+      {/* jika "True" tampilkan <notFound />, jika tidak tampilkan <loadingCards /> */}
+      {props.search.results.length ? recipeCards : (props.search.isNotFound ? notFound : loadingCards)}
+    </div>
+  )
 }
 
 const mapStateToProps = (state) => {
