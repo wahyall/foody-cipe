@@ -20,16 +20,6 @@
     transform: translate(-50%, -50%);
   }
 
-  .recipe-img:hover {
-    & ~ .title {
-      margin-bottom: -62px;
-    }
-
-    & ~ .time {
-      transform: translate(-30px, -84px);
-    }
-  }
-
   .time {
     display: inline-flex;
     justify-content: center;
