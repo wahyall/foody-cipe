@@ -57,7 +57,7 @@ export const homeDispatch = {
     }
   },
   popular: () => {
-    const popularRecipesID = [776505, 475619, 716627, 716298, 715437, 715569, 715546, 725569, 725560, 715378, 716431, 715419, 715495, 715432, 716423, 715568, 715397, 715545, 715515, 735820];
+    const popularRecipesID = [776505, 475619, 716627, 716298, 715437, 715569, 715546, 715562, 725560, 715378, 716431, 715419, 715495, 715432, 716423, 715568, 715397, 715545, 715515, 735820];
 
     return async dispatch => {
       const recipesData = await getInformation(popularRecipesID.join(','));
