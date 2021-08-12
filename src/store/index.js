@@ -4,6 +4,7 @@ import details from './reducer/details';
 import home from './reducer/home';
 import discover from './reducer/discover';
 import cookbook from './reducer/cookbook';
+import search from './reducer/search';
 import toast from './reducer/toast';
 import error from './reducer/error';
 import { postLocalStorage } from './libs/storage';
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   home,
   discover,
   cookbook,
+  search,
   toast,
   error
 })

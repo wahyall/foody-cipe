@@ -2,7 +2,7 @@ import store from "..";
 import apiKey from "../../api_key";
 
 export const getInformation = async (id) => {
-  return fetch(`https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${apiKey[3]}`)
+  return fetch(`https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${apiKey[1]}`)
     .then(response => response.json())
     .then(data => data.filter(recipe => recipe.image))
     .catch(() => store.dispatch({type: 'SET_ERROR'}))
@@ -27,15 +27,16 @@ export const getRecipeInstruction = (id) => {
 }
 
 export const searchRecipes = (keyword) => {
-  return fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${keyword}&number=20&apiKey=${apiKey[3]}`)
+  console.log(keyword)
+  fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${keyword}&number=20&apiKey=${apiKey[1]}`)
     .then(response => response.json())
     .then(async data => {
       if (data.results.length) {
         const recipesID = data.results.map(recipe => recipe.id);
         const recipesData = await getInformation(recipesID.join(','));
-        return recipesData;
+        return store.dispatch({type: 'SET_SEARCH_RESULTS', keyword, results: recipesData});
       } else {
-        return [];
+        return store.dispatch({type: 'SET_SEARCH_RESULTS', keyword, results: []});
       }
     })
     .catch(() => store.dispatch({type: 'SET_ERROR'}))

@@ -1,5 +1,6 @@
 import React from 'react';
 import './SearchResults.scss';
+import { connect } from 'react-redux';
 
 // Component
 import FeedCard from '../../../component/FeedCard/FeedCard';
@@ -13,18 +14,19 @@ import imageNotFound from '../../../icon/not-found.svg';
 class SearchResults extends React.Component {
   state = {
     keyword: this.props.match.params.keyword,
-    data: [],
-    isNotFound: false
+    isNotFound: this.props.search.isNotFound
   }
 
   componentDidMount = async () => {
-    const data = await searchRecipes(this.state.keyword);
-    const isNotFound = !data.length ? true : false;
-    this.setState({ data, isNotFound });
+    if (!this.props.search.keyword.length) {
+      const data = await searchRecipes(this.state.keyword);
+      const isNotFound = !data.length ? true : false;
+      this.setState({ data, isNotFound });
+    }
   }
 
   render() {    
-    const recipeCards = this.state.data.map(recipe => (
+    const recipeCards = this.props.search.results.map(recipe => (
       <FeedCard.Full
         key={recipe.id}
         id={recipe.id}
@@ -53,16 +55,22 @@ class SearchResults extends React.Component {
     )
 
     return (
-      <div className={"search-results" + (this.state.isNotFound ? " not-found" : "")}>
+      <div className={"search-results" + (this.props.search.isNotFound ? " not-found" : "")}>
         {/* 1. Cek apakah data memiliki isi */}
         {/* jika "True" tampilkan <recipeCards />, jika tidak lanjut ke nomor 2 */}
 
         {/* 2. Cek apakah pencarian tidak mengembalikan data, alias Not Found */}
         {/* jika "True" tampilkan <notFound />, jika tidak tampilkan <loadingCards /> */}
-        {this.state.data.length ? recipeCards : (this.state.isNotFound ? notFound : loadingCards)}
+        {this.props.search.results.length ? recipeCards : (this.props.search.isNotFound ? notFound : loadingCards)}
       </div>
     )
   }
 }
 
-export default SearchResults;
+const mapStateToProps = (state) => {
+  return {
+    search: state.search
+  }
+}
+
+export default connect(mapStateToProps)(SearchResults);

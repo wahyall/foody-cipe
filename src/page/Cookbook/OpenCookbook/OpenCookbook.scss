@@ -117,7 +117,7 @@
     }
 
     .sort:active {
-      background-color: darken($color: $bg-light, $amount: 4);
+      background-color: darken($color: $bg-light, $amount: 3);
     }
 
     .select-sort {
@@ -141,7 +141,7 @@
 
       .sort-option.active,
       .sort-option:active {
-        background-color: darken($color: $bg-white, $amount: 5);
+        background-color: darken($color: $bg-white, $amount: 3);
       }
     }
 

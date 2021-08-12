@@ -147,10 +147,10 @@ class OpenCookbook extends React.Component {
     return (
       <div id="open-cookbook">
         <nav>
-          <div className="back"
+          <button className="back"
             onClick={() => this.props.history.push('/cookbook/')}>
             <img src={back} alt="go back" />
-          </div>
+          </button>
           <div className="name">{this.state.name}</div>
           {this.state.id === 'favorite-recipes-1626578977045' ? null : (
             <Link to={"/cookbook/" + this.state.id + "/edit"} className="edit">

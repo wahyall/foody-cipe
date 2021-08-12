@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import arrow from '../../../icon/arrow-black.svg';
 import search from '../../../icon/search.svg';
 
+// Libs
+import { searchRecipes } from '../../../store/libs/request';
+
 const SearchAutocomplete = (props) => {
   return (
     <div className="search-autocomplete">
@@ -13,7 +16,7 @@ const SearchAutocomplete = (props) => {
         <div className="item">
           <img src={search} alt="search" />
           <Link to={"/search/" + item.title}
-            onClick={() => props.setKeyword(item.title)}>{item.title}</Link>
+            onClick={() => searchRecipes(item.title)}>{item.title}</Link>
           <img src={arrow} alt="arrow" className="setter"
             onClick={() => props.autocompleteToKeyword(item.title)} />
         </div>
