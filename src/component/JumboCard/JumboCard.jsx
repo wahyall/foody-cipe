@@ -21,7 +21,7 @@ const JumboCard = {
         </div>
         <Link to={"/details/" + props.id} className="title"
           onClick={() => dispatch({type: 'GO_DETAILS', data: props.fullData})}>
-          <div className="name">{props.name}</div>
+          <span className="name">{props.name}</span>
           <div style={{display: 'flex', marginBottom: '0.35rem', marginTop: '0.2rem'}}>
             <div className="likes">
               <img src={likes} alt="Likes" />

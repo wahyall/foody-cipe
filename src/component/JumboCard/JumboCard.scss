@@ -1,7 +1,7 @@
 @import "../../color.scss";
 
 .jumbo-card {
-  height: 140px;
+  height: 150px;
   border-radius: 8px;
   position: relative;
   overflow: hidden;
@@ -114,11 +114,11 @@
 }
 
 .loading-jumbo-card {
-  height: 140px;
+  height: 150px;
   border-radius: 8px;
   position: relative;
   overflow: hidden;
-  background-color: #d1ccc7;
+  background-color: darken($color: $bg-white, $amount: 5);
 
   @media (min-width: 420px) {
     & {

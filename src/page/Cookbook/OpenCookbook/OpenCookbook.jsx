@@ -12,6 +12,9 @@ import edit from '../../../icon/pencil-edit.svg';
 import sort from '../../../icon/sort.svg';
 import { useEffect } from 'react';
 
+// Libs
+import { getLocalStorage, postLocalStorage } from '../../../store/libs/storage';
+
 class OpenCookbook extends React.Component {
   constructor(props) {
     super(props);
@@ -35,9 +38,7 @@ class OpenCookbook extends React.Component {
     });
 
     setTimeout(() => {
-      // Jika di dalam localStorage terdapat data Cookbook, 
-      // berarti sebelumnya user sudah pernah dinotice
-      !localStorage.getItem('cookbook') && this.noticeDelete();
+      !getLocalStorage('notice_delete') && this.noticeDelete();
     }, 200);
   }
 
@@ -67,7 +68,9 @@ class OpenCookbook extends React.Component {
     // Menghilangkan animasi saat user ingin menggeser resep
     noticeElement.addEventListener('touchstart', function () {
       this.style.animation = 'none';
-    })
+    });
+
+    postLocalStorage('notice_delete', true);
   }
 
   sortCookbookData = ({ withAnimate, data }) => {

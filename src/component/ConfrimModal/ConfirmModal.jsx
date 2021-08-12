@@ -6,18 +6,18 @@ const ConfirmModal = (props) => {
     <div className={"confirm-modal" + (props.isOpenConfirm ? " active" : "")}>
       <div className="modal">
         <div className="modal-header">
-          <div className="title">{props.title}</div>
-          <div className="close"
-            onClick={props.onClose}>×</div>
+          <span className="title">{props.title}</span>
+          <span className="close"
+            onClick={props.onClose}>×</span>
         </div>
         <div className="modal-body">
-          <div className="message">{props.message}</div>
+          <p className="message">{props.message}</p>
         </div>
         <div className="modal-footer">
-          <div className="btn"
-            onClick={props.onCancel}>{props.cancelCopy}</div>
-          <div className="confirm btn"
-            onClick={props.onConfirm}>{props.confirmCopy}</div>
+          <button className="btn"
+            onClick={props.onCancel}>{props.cancelCopy}</button>
+          <button className="confirm btn"
+            onClick={props.onConfirm}>{props.confirmCopy}</button>
         </div>
       </div>
     </div>

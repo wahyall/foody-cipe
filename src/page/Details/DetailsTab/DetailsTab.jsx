@@ -21,27 +21,27 @@ const DetailsTab = {
     
     return (
       <div className={"details-tab description" + isActve}>
-        <div className="sum" dangerouslySetInnerHTML={{__html: props.summary}}></div>
+        <p className="sum" dangerouslySetInnerHTML={{__html: props.summary}}></p>
         <div className="nutrition">
           <div className="item">
-            <div className="value">{nutrition.calories.replace('k', '')}</div>
-            <div className="type">Calories</div>
-            <div className="unit">kkal</div>
+            <span className="value">{nutrition.calories.replace('k', '')}</span>
+            <span className="type">Calories</span>
+            <span className="unit">kkal</span>
           </div>
           <div className="item">
-            <div className="value">{nutrition.carbs.replace('g', '')}</div>
-            <div className="type">Carbo</div>
-            <div className="unit">gram</div>
+            <span className="value">{nutrition.carbs.replace('g', '')}</span>
+            <span className="type">Carbo</span>
+            <span className="unit">gram</span>
           </div>
           <div className="item">
-            <div className="value">{nutrition.fat.replace('g', '')}</div>
-            <div className="type">Fat</div>
-            <div className="unit">gram</div>
+            <span className="value">{nutrition.fat.replace('g', '')}</span>
+            <span className="type">Fat</span>
+            <span className="unit">gram</span>
           </div>
           <div className="item">
-            <div className="value">{nutrition.protein.replace('g', '')}</div>
-            <div className="type">Protein</div>
-            <div className="unit">gram</div>
+            <spa className="value">{nutrition.protein.replace('g', '')}</spa>
+            <spa className="type">Protein</spa>
+            <spa className="unit">gram</spa>
           </div>
         </div>
       </div>
@@ -70,12 +70,12 @@ const DetailsTab = {
                 <div style={{backgroundImage: `url(https://spoonacular.com/cdn/ingredients_100x100/${item.image})`}}></div>
               </div>
             </div>
-            <div className="name">
+            <span className="name">
               {/* Mengubah format string menjadi huruf kapital */}
               {/* Case: "whole diced appel" => "Whole Diced Apple" */}
               {item.name.split(' ').map(str => str.replace(str[0], str[0].toUpperCase())).join(' ')}
-            </div>
-            <div className="amount">{item.amount.metric.value} {item.amount.metric.unit}</div>
+            </span>
+            <span className="amount">{item.amount.metric.value} {item.amount.metric.unit}</span>
           </div>
         ))}
       </div>
@@ -99,8 +99,8 @@ const DetailsTab = {
       <div className={"details-tab instruction" + isActve}>
         {instruction.steps.map(item => (
           <div className="item">
-            <div className="number">{item.number}</div>
-            <div className="step">{item.step}</div>
+            <span className="number">{item.number}</span>
+            <span className="step">{item.step}</span>
           </div>
         ))}
       </div>

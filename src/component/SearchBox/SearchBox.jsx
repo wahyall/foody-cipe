@@ -13,7 +13,7 @@ const SearchBox = () => {
   return (
     <Link to="/search" className="search-box"
       onClick={() => postSessionStorage('prevPage', window.location.pathname)}>
-      <div>Search recipes ...</div>
+      <span>Search recipes ...</span>
       <img src={search} alt="search" />
     </Link>
   )

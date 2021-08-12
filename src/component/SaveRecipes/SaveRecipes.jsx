@@ -15,14 +15,14 @@ class SaveRecipes extends React.Component {
         <div className="modal">
           <div className="modal-header">
             <div>
-              <div className="title">Save</div>
-              <div className="name">{this.props.recipe.title}</div>
+              <span className="title">Save</span>
+              <span className="name">{this.props.recipe.title}</span>
             </div>
-            <div className="create"
+            <button className="create"
               onClick={() => {
                 this.props.openCreatingCookbook();
                 this.props.closeSavingRecipe();
-              }}>+ Cookbook</div>
+              }}>+ Cookbook</button>
           </div>
           <div className="modal-body">
             {this.props.cookbook.length > 1 ? (
@@ -34,20 +34,20 @@ class SaveRecipes extends React.Component {
                 <div className="icon">
                   <img src={saveActive} alt="cookbook icon" />
                 </div>
-                <div>You don't have any Cookbook</div>
-                <div onClick={() => {
+                <span>You don't have any Cookbook</span>
+                <button onClick={() => {
                   this.props.openCreatingCookbook();
                   this.props.closeSavingRecipe();
-                }}>Create New</div>
+                }}>Create New</button>
               </div>
             )}
           </div>
           <div className="modal-footer">
-            <div className="done"
+            <button className="done"
               onClick={() => {
                 this.props.closeSavingRecipe();
                 this.props.dispatch({type: 'SHOW_TOAST', message: 'Cookbook updated!'})
-              }}>Done</div>
+              }}>Done</button>
           </div>
         </div>
       </div>

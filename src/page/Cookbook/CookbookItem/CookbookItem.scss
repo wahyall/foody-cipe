@@ -3,6 +3,7 @@
 .cookbook-item {
   padding: 0.75rem;
   background-color: $bg-white;
+  box-shadow: 0 0.5rem 1rem rgba($color: $text-dark, $alpha: 0.0125);
   border-radius: 4px;
   display: grid;
   grid-template-columns: 80px 1fr;

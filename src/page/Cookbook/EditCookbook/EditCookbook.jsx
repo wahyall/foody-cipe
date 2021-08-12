@@ -39,16 +39,16 @@ const EditCookbook = (props) => {
   return (
     <div id="edit-cookbook">
       <nav>
-        <div className="back"
+        <button className="back"
           // Lakukan konfirmasi jika user kembali tanpa menyimpan perubahan
           onClick={() => isChanged ? setConfirmBeforeSaving(true) : props.history.goBack()}>
           <img src={back} alt="go back" />
-        </div>
-        <div className="name">Edit Cookbook</div>
-        <div className="save"
+        </button>
+        <span className="name">Edit Cookbook</span>
+        <button className="save"
           onClick={dispatchEditCookbook}>
           <img src={save} alt="save edit cookbook" />
-        </div>
+        </button>
       </nav>
       <form action="">
         <div>

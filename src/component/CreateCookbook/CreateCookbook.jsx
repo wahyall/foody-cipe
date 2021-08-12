@@ -49,9 +49,9 @@ class CreateCookbook extends React.Component {
         <div className="modal">
           <form onSubmit={this.createCookbook}>
             <div className="modal-header">
-              <div className="title">Create New Cookbook</div>
-              <div className="close"
-                onClick={this.props.closeCreatingCookbook}>×</div>
+              <span className="title">Create New Cookbook</span>
+              <span className="close"
+                onClick={this.props.closeCreatingCookbook}>×</span>
             </div>
             <div className="modal-body">
               <div className="input-group">

@@ -12,7 +12,7 @@ export const postLocalStorage = (key, value) => (
 export const initLocalStorage = () => {
   // Membuat format tanggal '20210806'
   const tempDate = getThisDate();
-  localStorage.setItem('tempDate', tempDate);
+  localStorage.setItem('temp_date', tempDate);
 }
 
 // Session Storage

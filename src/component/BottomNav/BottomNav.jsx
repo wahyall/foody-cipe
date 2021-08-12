@@ -62,9 +62,9 @@ const BottomNavItem = (props) => {
       <div className="icon">
         <img src={renderedIcon} alt={props.name} />
       </div>     
-      <div className="name">
+      <span className="name">
         {props.name.replace(props.name[0], props.name[0].toUpperCase())}
-      </div> 
+      </span> 
     </div>
   )
 }

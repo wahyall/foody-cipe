@@ -59,9 +59,9 @@ class Discover extends React.Component {
             {this.state.availableCategory.map(category => (
               <Link to={"/discover" + category.path} key={category.name} className="tab-link" draggable="false"
                 onClick={() => this.props.dispatch({type: 'SET_ACTIVE_CATEGORY', category})}>
-                <div className={"tab-item" + (category.name === this.state.activeCategory ? " active" : "")}>
+                <span className={"tab-item" + (category.name === this.state.activeCategory ? " active" : "")}>
                   {category.name}
-                </div>
+                </span>
               </Link>
             ))}
           </div>

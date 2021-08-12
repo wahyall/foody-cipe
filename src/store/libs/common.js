@@ -63,7 +63,7 @@ export const getThisDate = () => {
 }
 
 export const checkIsTomorrow = () => {
-  const tempDate = getLocalStorage('tempDate');
+  const tempDate = getLocalStorage('temp_date');
   const thisDate = getThisDate();
   
   return thisDate !== tempDate;

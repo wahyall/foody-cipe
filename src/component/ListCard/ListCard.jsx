@@ -128,8 +128,8 @@ class ListCard extends React.Component {
         <Link to={"/details/" + this.props.recipe.id} className="body" ref={this.cardBody}>
           <img src={this.props.recipe.image} alt={this.props.recipe.name} />
           <div className="content">
-            <div className="name">{this.props.recipe.title}</div>
-            <div className="time">{this.props.recipe.readyInMinutes} Min</div>
+            <span className="name">{this.props.recipe.title}</span>
+            <span className="time">{this.props.recipe.readyInMinutes} Min</span>
           </div>
         </Link>
         <div className="delete"

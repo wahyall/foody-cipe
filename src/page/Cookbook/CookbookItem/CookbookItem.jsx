@@ -39,8 +39,8 @@ const CookbookItem = (props) => {
         </div>
       ) : null}
       <Link to={"/cookbook/" + props.id} className="content">
-        <div className="name">{props.name}</div>
-        <div className="amount">{props.data.length} {props.data.length > 1 ? ' Recipes' : 'Recipe'}</div>
+        <span className="name">{props.name}</span>
+        <span className="amount">{props.data.length} {props.data.length > 1 ? ' Recipes' : 'Recipe'}</span>
       </Link>
 
       {/* Jika cookbook-item yang ditampilkan adalah Favorite Recipes */}
@@ -55,7 +55,7 @@ const CookbookItem = (props) => {
           </div>
           <div className={"menu" + (isShowMenu ? " active" : "")}>
             <Link to={"/cookbook/" + props.id + "/edit"}>Edit</Link>
-            <div onClick={() => setIsDeleting(true)}>Delete</div>
+            <button onClick={() => setIsDeleting(true)}>Delete</button>
           </div>
         </div>
       )}

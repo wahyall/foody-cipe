@@ -11,10 +11,10 @@ import favoriteUnfill from '../../icon/favorite-unfill.svg';
 const ActionButton = {
   Back: (props) => {
     return (
-      <div className="action-button back"
+      <button className="action-button back"
         onClick={() => props.onGoBack()}>
         <img src={arrow} alt="back" />
-      </div>
+      </button>
     )
   },
   Favorite: (props) => {
@@ -24,18 +24,18 @@ const ActionButton = {
     const dispatchFavorite = isFavorite ? 'DELETE_RECIPE' : 'SAVE_RECIPE';
 
     return (
-      <div className="action-button favorite"
+      <button className="action-button favorite"
         onClick={() => dispatch({type: dispatchFavorite, id: 'favorite-recipes-1626578977045', recipe: props.fullData})}>
         <img src={isFavorite ? favoriteFill : favoriteUnfill} alt="favorite" />
-      </div>
+      </button>
     )
   },
   Cookbook: (props) => {
     return (
-      <div className="action-button cookbook"
+      <button className="action-button cookbook"
         onClick={props.openSavingRecipe}>
         <img src={addCookbook} alt="add to cookbook" />
-      </div>
+      </button>
     )
   }
 }

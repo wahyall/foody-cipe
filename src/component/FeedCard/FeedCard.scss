@@ -102,7 +102,7 @@
     overflow: hidden;
     border-radius: 8px;
     margin-bottom: 0.5rem;
-    background-color: #d1ccc7;
+    background-color: darken($color: $bg-white, $amount: 5);
 
     .shine {
       position: absolute;

@@ -13,7 +13,7 @@ import SearchAutocomplete from './SearchAutocomplete/SearchAutocomplete';
 import SearchResults from './SearchResults/SearchResults';
 
 // Libs
-import { apiKey } from '../../store/libs/request';
+import apiKey from '../../api_key';
 
 // Storage
 import { getSessionStorage } from '../../store/libs/storage';
@@ -32,7 +32,7 @@ class Search extends React.Component {
     const keyword = ev.target.value;
     this.setState({keyword})
     if (keyword.length >= 3) {
-      fetch(`https://api.spoonacular.com/recipes/autocomplete?number=6&query=${keyword}&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/autocomplete?number=6&query=${keyword}&apiKey=${apiKey[2]}`)
         .then(response => response.json())
         .then(data => data.code === 402 ? this.props.dispatch({type: 'SET_ERROR'}) : this.setState({autocomplete: data}))
     }

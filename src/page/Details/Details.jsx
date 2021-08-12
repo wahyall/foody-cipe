@@ -86,41 +86,41 @@ class Details extends React.Component {
             <div className="recipe-name">{this.state.data.title}</div>
             <div className="info">
               <div className="item">
-                <div className="value">{this.state.data.aggregateLikes}</div>
-                <div>Likes</div>
+                <span className="value">{this.state.data.aggregateLikes}</span>
+                <span>Likes</span>
               </div>
               <div className="line-separator"></div>
               <div className="item">
-                <div className="value">{this.state.data.spoonacularScore}</div>
-                <div>Score</div>
+                <span className="value">{this.state.data.spoonacularScore}</span>
+                <span>Score</span>
               </div>
               <div className="line-separator"></div>
               <div className="item">
-                <div className="value">{this.state.data.readyInMinutes}</div>
-                <div>Min</div>
+                <span className="value">{this.state.data.readyInMinutes}</span>
+                <span>Min</span>
               </div>
-              <div className="line-separator"></div>
+              <div spanclassName="line-separator"></div>
               <div className="item">
-                <div className="value">{this.state.data.servings}</div>
-                <div>Serve</div>
+                <span className="value">{this.state.data.servings}</span>
+                <span>Serve</span>
               </div>
             </div>
             <div className="tabs">
-              <div
+              <button
                 className={"tab-item" + (this.state.activeTab === "Description" ? " active" : "")} 
                 onClick={() => this.setState({activeTab: 'Description'})}>
                 Description
-              </div>
-              <div
+              </button>
+              <button
                 className={"tab-item" + (this.state.activeTab === "Ingredients" ? " active" : "")} 
                 onClick={() => this.setState({activeTab: 'Ingredients'})}>
                 Ingredients
-              </div>
-              <div
+              </button>
+              <button
                 className={"tab-item" + (this.state.activeTab === "Instruction" ? " active" : "")} 
                 onClick={() => this.setState({activeTab: 'Instruction'})}>
-                Instruction
-              </div>
+                Insontruction
+              </button>
             </div>
             <DetailsTab.Description
               id={this.state.id}

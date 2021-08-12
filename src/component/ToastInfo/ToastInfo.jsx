@@ -34,8 +34,8 @@ const ToastInfo = () => {
   return (
     <div className="toast-info" ref={elem}>
       <img src={check} alt="success" />
-      <div className="message">{toast.message}</div>
-      <div className="close"
+      <span className="message">{toast.message}</span>
+      <button className="close"
         onClick={() => {
           elem.current.style.animation = 'fadeDown .2s forwards';
           setTimeout(() => {
@@ -43,7 +43,7 @@ const ToastInfo = () => {
           }, 200);
         }}>
           <img src={close} />
-      </div>
+      </button>
     </div>
   )
 }

@@ -1,37 +1,33 @@
 import store from "..";
-
-export const apiKey = '17f1fa02519e41ca9febd509f54e8ca0';
+import apiKey from "../../api_key";
 
 export const getInformation = async (id) => {
-  return fetch(`https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${apiKey}`)
+  return fetch(`https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${apiKey[3]}`)
     .then(response => response.json())
     .then(data => data.filter(recipe => recipe.image))
     .catch(() => store.dispatch({type: 'SET_ERROR'}))
 }
 
 export const getRecipeNutrition = (id) => {
-  return fetch(`https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=${apiKey}`)
+  return fetch(`https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=${apiKey[0]}`)
     .then(response => response.json())
-    .then(data => data)
-    .catch(() => store.dispatch({type: 'SET_ERROR'}))
+    .then(data => data.code === 402 ? store.dispatch({type: 'SET_ERROR'}) : data)
 }
 
 export const getRecipeIngredients = (id) => {
-  return fetch(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${apiKey}`)
+  return fetch(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${apiKey[0]}`)
     .then(response => response.json())
-    .then(data => data.ingredients)
-    .catch(() => store.dispatch({type: 'SET_ERROR'}))
+    .then(data => data.code === 402 ? store.dispatch({type: 'SET_ERROR'}) : data.ingredients)
 }
 
 export const getRecipeInstruction = (id) => {
-  return fetch(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apiKey}`)
+  return fetch(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apiKey[0]}`)
     .then(response => response.json())
-    .then(data => data[0])
-    .catch(() => store.dispatch({type: 'SET_ERROR'}))
+    .then(data => data.code === 402 ? store.dispatch({type: 'SET_ERROR'}) : data[0])
 }
 
 export const searchRecipes = (keyword) => {
-  return fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${keyword}&number=20&apiKey=${apiKey}`)
+  return fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${keyword}&number=20&apiKey=${apiKey[3]}`)
     .then(response => response.json())
     .then(async data => {
       if (data.results.length) {
@@ -48,7 +44,7 @@ export const searchRecipes = (keyword) => {
 export const homeDispatch = {
   recommendation: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=20&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=20&apiKey=${apiKey[2]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -76,7 +72,7 @@ export const homeDispatch = {
   },
   recent: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=20&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=20&apiKey=${apiKey[1]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -94,7 +90,7 @@ export const homeDispatch = {
     return dispatch => {
       dispatch({type: 'SET_CATEGORY_TITLE', title: randomCategory});
 
-      fetch(`https://api.spoonacular.com/recipes/random?number=20&tags=${randomCategory}&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=20&tags=${randomCategory}&apiKey=${apiKey[1]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -109,7 +105,7 @@ export const homeDispatch = {
 export const discoverDispatch = {
   all: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&apiKey=${apiKey[1]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -121,7 +117,7 @@ export const discoverDispatch = {
   },
   mainCourse: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=main course&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=main course&apiKey=${apiKey[1]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -133,7 +129,7 @@ export const discoverDispatch = {
   },
   sideDish: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=side dish&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=side dish&apiKey=${apiKey[1]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -145,7 +141,7 @@ export const discoverDispatch = {
   },
   appetizer: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=appetizer&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=appetizer&apiKey=${apiKey[1]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -157,7 +153,7 @@ export const discoverDispatch = {
   },
   salad: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=salad&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=salad&apiKey=${apiKey[1]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -169,7 +165,7 @@ export const discoverDispatch = {
   },
   drink: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=drink&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=drink&apiKey=${apiKey[3]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -181,7 +177,7 @@ export const discoverDispatch = {
   },
   soup: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=soup&apiKey=${apiKey}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=soup&apiKey=${apiKey[3]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
