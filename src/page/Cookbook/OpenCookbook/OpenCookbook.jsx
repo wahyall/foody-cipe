@@ -69,11 +69,6 @@ class OpenCookbook extends React.Component {
     noticeElement.addEventListener('touchstart', function () {
       this.style.animation = 'none';
     });
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> efd54b20f7280a3f1ef95c59d6d9ee7976283a71
     postLocalStorage('notice_delete', true);
   }
 
