@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './SeeMore.scss';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +11,21 @@ import search from '../../icon/search.svg';
 
 const SeeMore = (props) => {  
   const content = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const paths = window.location.pathname.split('/');
+  useEffect(() => {
+    if (paths[2]) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+
+      // Auto scroll kembali ke atas, agar saat dibuka lagi berada di atas
+      setTimeout(() => {
+        // Menunggu animasi swipe selesai
+        content.current.scrollTop = 0;
+      }, 200);
+    }
+  });
 
   const recipeCards = props.data.map(recipe => (
     <JumboCard.Full
@@ -21,7 +36,7 @@ const SeeMore = (props) => {
       rates={recipe.spoonacularScore}
       time={recipe.readyInMinutes}
       desc={recipe.summary} />
-  ))
+  ));
 
   const loadingCards = [
     <JumboCard.Loading />,
@@ -30,21 +45,14 @@ const SeeMore = (props) => {
     <JumboCard.Loading />,
     <JumboCard.Loading />,
     <JumboCard.Loading />
-  ]
+  ];
   
   return (
-    <main className={"see-more" + (props.active ? ' active' : '')}>
+    <main className={"see-more" + (isOpen ? ' active' : '')}>
       <header>
-        <img src={arrow} alt="back" className="back"
-          onClick={() => {
-            props.onCloseSeeMore({ ...props, active: false });
-
-            // Auto scroll kembali ke atas, agar saat dibuka lagi berada di atas
-            setTimeout(() => {
-              // Menunggu animasi swipe selesai
-              content.current.scrollTop = 0;
-            }, 200);
-          }} />
+        <Link to="/" onClick={() => props.onCloseSeeMore({ ...props, active: false })}>
+          <img src={arrow} alt="back" className="back" />
+        </Link>
         <div className="title">{props.title}</div>
         <Link to="/search" className="search">
           <img src={search} alt="search" />

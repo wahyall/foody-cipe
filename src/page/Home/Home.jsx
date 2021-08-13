@@ -49,7 +49,7 @@ class Home extends React.Component {
           data={this.props.home.category.data}
           onOpenSeeMore={(seeMore) => this.setState({ seeMore })} />
 
-        <SeeMore
+        <SeeMore {...this.props}
           active={this.state.seeMore.active}
           title={this.state.seeMore.title}
           data={this.state.seeMore.data}

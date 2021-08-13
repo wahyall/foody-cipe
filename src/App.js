@@ -39,7 +39,7 @@ const App = (props) => {
 
       <Switch>
         {/* Home*/}
-        <Route exact path="/" render={props => (
+        <Route exact path={["/", "/more/recommendation", "/more/popular", "/more/rated", "/more/recent", "/more/category"]} render={props => (
           <Home {...props} />
         )} />
 

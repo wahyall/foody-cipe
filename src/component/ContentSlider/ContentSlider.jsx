@@ -1,7 +1,7 @@
 import React from 'react';
 import './ContentSlider.scss';
 import { connect } from 'react-redux';
-import { homeDispatch } from '../../store/libs/request';
+import { Link } from 'react-router-dom';
 
 // Component
 import JumboCard from '../JumboCard/JumboCard';
@@ -10,6 +10,7 @@ import JumboCard from '../JumboCard/JumboCard';
 import arrow from '../../icon/arrow-black.svg';
 
 // Libs
+import { homeDispatch } from '../../store/libs/request';
 import { checkIsTomorrow } from '../../store/libs/common';
 import { getLocalStorage, postLocalStorage, initLocalStorage } from '../../store/libs/storage';
 import { draggableOverflow } from '../../store/libs/common';
@@ -83,7 +84,7 @@ class ContentSlider extends React.Component {
     ];
   
     return (
-      <div className="content-slider">
+      <Link to={"/more/" + this.props.name} className="content-slider">
         <header className="header"
           onClick={this.openSeeMore}>
           <span>{this.props.title}</span>
@@ -94,7 +95,7 @@ class ContentSlider extends React.Component {
             {renderedRecipe.length ? recipeCards : loadingCards}
           </div>
         </section>
-      </div>
+      </Link>
     )
   }
 }
