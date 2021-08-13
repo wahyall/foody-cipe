@@ -5,4 +5,4 @@ Get recipe recommendations sucs as Main Course, Appetizer, Salad, Side Dish, and
 
 Website: https://foody-cipe.netlify.app
 
-Source API from https://spoonacular.com
+Source API from https://spoonacular.com/food-api
