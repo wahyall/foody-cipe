@@ -4,3 +4,5 @@ Find more than 5000 cool recipes for you.
 Get recipe recommendations sucs as Main Course, Appetizer, Salad, Side Dish, and much more.
 
 Website: https://foody-cipe.netlify.app
+
+Source API from https://spoonacular.com
