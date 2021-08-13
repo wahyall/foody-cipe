@@ -44,16 +44,16 @@ class CreateCookbook extends React.Component {
 
   render() {
     return (
-      <div className={"create-cookbook" + (this.props.isCreatingCookbook ? " active" : "")}
+      <main className={"create-cookbook" + (this.props.isCreatingCookbook ? " active" : "")}
         onClick={(ev) => ev.target.classList.contains('create-cookbook') && this.props.closeCreatingCookbook()}>
         <div className="modal">
           <form onSubmit={this.createCookbook}>
-            <div className="modal-header">
+            <section className="modal-header">
               <span className="title">Create New Cookbook</span>
               <span className="close"
                 onClick={this.props.closeCreatingCookbook}>×</span>
-            </div>
-            <div className="modal-body">
+            </section>
+            <section className="modal-body">
               <div className="input-group">
                 <label htmlFor="name">Name</label>
                 <input className="input" type="text" id="name" autoComplete="off" 
@@ -69,14 +69,14 @@ class CreateCookbook extends React.Component {
                   html={this.state.desc}
                   onChange={(ev) => this.setState({desc: ev.target.value})} />
               </div>
-            </div>
-            <div className="modal-footer">
+            </section>
+            <section className="modal-footer">
               <button type="submit" className="create-btn"
                 disabled={this.state.name.length ? null : "disabled"}>Create</button>
-            </div>
+            </section>
           </form>
         </div>
-      </div>
+      </main>
     )
   }
 }

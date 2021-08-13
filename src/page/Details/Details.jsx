@@ -72,17 +72,17 @@ class Details extends React.Component {
   
   render() {
     return (
-      <div id="details" onScroll={this.effectOnScroll}>
-        <div className="navbar" ref={this.navbar}>
+      <main id="details" onScroll={this.effectOnScroll}>
+        <nav className="navbar" ref={this.navbar}>
           <ActionButton.Back {...this.props} onGoBack={this.goBack} />
           <ActionButton.Cookbook openSavingRecipe={() => this.setState({isSavingRecipe: true})} />
           <ActionButton.Favorite fullData={this.state.data} />
-        </div>
-        <div className="body">
+        </nav>
+        <section className="body">
           <div className="recipe-img"
             style={{backgroundImage: `url(${this.state.data.image})`}}
             ref={this.recipeImg}></div>
-          <div className="content">
+          <section className="content">
             <div className="recipe-name">{this.state.data.title}</div>
             <div className="info">
               <div className="item">
@@ -99,13 +99,13 @@ class Details extends React.Component {
                 <span className="value">{this.state.data.readyInMinutes}</span>
                 <span>Min</span>
               </div>
-              <div spanclassName="line-separator"></div>
+              <div className="line-separator"></div>
               <div className="item">
                 <span className="value">{this.state.data.servings}</span>
                 <span>Serve</span>
               </div>
             </div>
-            <div className="tabs">
+            <nav className="tabs">
               <button
                 className={"tab-item" + (this.state.activeTab === "Description" ? " active" : "")} 
                 onClick={() => this.setState({activeTab: 'Description'})}>
@@ -121,7 +121,7 @@ class Details extends React.Component {
                 onClick={() => this.setState({activeTab: 'Instruction'})}>
                 Insontruction
               </button>
-            </div>
+            </nav>
             <DetailsTab.Description
               id={this.state.id}
               summary={this.state.data.summary}
@@ -132,8 +132,8 @@ class Details extends React.Component {
             <DetailsTab.Instruction
               id={this.state.id}
               activeTab={this.state.activeTab} />
-          </div>
-        </div>
+          </section>
+        </section>
         <SaveRecipes
           recipe={this.state.data}
           isSavingRecipe={this.state.isSavingRecipe}
@@ -143,7 +143,7 @@ class Details extends React.Component {
           recipe={this.state.data} 
           isCreatingCookbook={this.state.isCreatingCookbook}
           closeCreatingCookbook={() => this.setState({isCreatingCookbook: false})} />
-      </div>
+      </main>
     )
   }
 }

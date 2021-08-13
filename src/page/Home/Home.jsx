@@ -17,7 +17,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div id="home">
+      <main id="home">
         <ContentSlider
           key="recommendation slider"
           name="recommendation"
@@ -54,7 +54,7 @@ class Home extends React.Component {
           title={this.state.seeMore.title}
           data={this.state.seeMore.data}
           onCloseSeeMore={(seeMore) => this.setState({ seeMore })} />
-      </div>
+      </main>
     )
   }
 }

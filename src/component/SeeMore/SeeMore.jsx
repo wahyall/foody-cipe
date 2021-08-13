@@ -31,8 +31,8 @@ const SeeMore = (props) => {
   ]
   
   return (
-    <div className={"see-more" + (props.active ? ' active' : '')}>
-      <div className="header">
+    <main className={"see-more" + (props.active ? ' active' : '')}>
+      <header>
         <img src={arrow} alt="back" className="back"
           onClick={() => (
             props.onCloseSeeMore({ ...props, active: false })
@@ -41,11 +41,11 @@ const SeeMore = (props) => {
         <Link to="/search" className="search">
           <img src={search} alt="search" />
         </Link>
-      </div>
-      <div className="content">
+      </header>
+      <section className="content">
         {props.data.length ? recipeCards : loadingCards}
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
 

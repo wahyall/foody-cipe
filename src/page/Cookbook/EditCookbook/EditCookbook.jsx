@@ -37,7 +37,7 @@ const EditCookbook = (props) => {
   }
 
   return (
-    <div id="edit-cookbook">
+    <main id="edit-cookbook">
       <nav>
         <button className="back"
           // Lakukan konfirmasi jika user kembali tanpa menyimpan perubahan
@@ -50,31 +50,33 @@ const EditCookbook = (props) => {
           <img src={save} alt="save edit cookbook" />
         </button>
       </nav>
-      <form action="">
-        <div>
-          <div className="thumbnail" style={{backgroundImage: `url(${thisCookbook.data[0].image})`}}></div>
+      <section>
+        <form action="">
+          <div>
+            <div className="thumbnail" style={{backgroundImage: `url(${thisCookbook.data[0].image})`}}></div>
+            <div className="input-group">
+              <label htmlFor="name">Name</label>
+              <input className="input" type="text" id="name" autoComplete="off"
+                defaultValue={cookbookName}
+                onInput={(ev) => {
+                  setCookbookName(ev.target.value);
+                  setIsChanged(true);
+                }} />
+            </div>
+          </div>
           <div className="input-group">
-            <label htmlFor="name">Name</label>
-            <input className="input" type="text" id="name" autoComplete="off"
-              defaultValue={cookbookName}
-              onInput={(ev) => {
-                setCookbookName(ev.target.value);
+            <label htmlFor="desc">
+                Description <span style={{opacity: '0.6'}}>(Optional)</span>
+            </label>
+            <ContentEditable className="input"
+              html={cookbookDesc}
+              onChange={(ev) => {
+                setCookbookDesc(ev.target.value);
                 setIsChanged(true);
               }} />
           </div>
-        </div>
-        <div className="input-group">
-          <label htmlFor="desc">
-              Description <span style={{opacity: '0.6'}}>(Optional)</span>
-          </label>
-          <ContentEditable className="input"
-            html={cookbookDesc}
-            onChange={(ev) => {
-              setCookbookDesc(ev.target.value);
-              setIsChanged(true);
-            }} />
-        </div>
-      </form>
+        </form>
+      </section>
       {/* <ConfirmBeforeSaving isConfirmBeforeSaving={confirmBeforeSaving}
         confirmSave={dispatchEditCookbook}
         confirmDontSave={() => props.history.goBack()} /> */}
@@ -87,25 +89,7 @@ const EditCookbook = (props) => {
         onConfirm={dispatchEditCookbook}
         onCancel={() => props.history.goBack()}
         onClose={() => setConfirmBeforeSaving(false)} />
-    </div>
-  )
-}
-
-const ConfirmBeforeSaving = (props) => {
-  return (
-    <div className={"confirm-before-saving" + (props.isConfirmBeforeSaving ? " active" : "")}>
-      <div className="modal">
-        <div className="modal-header">
-          <div>Are you sure want to leave this page without saving?</div>
-        </div>
-        <div className="modal-footer">
-          <div className="dont-btn btn"
-            onClick={props.confirmDontSave}>Don't Save</div>
-          <div className="save-btn btn"
-            onClick={props.confirmSave}>Save</div>
-        </div>
-      </div>
-    </div>
+    </main>
   )
 }
 

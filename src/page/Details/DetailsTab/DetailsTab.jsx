@@ -20,7 +20,7 @@ const DetailsTab = {
     }
     
     return (
-      <div className={"details-tab description" + isActve}>
+      <section className={"details-tab description" + isActve}>
         <p className="sum" dangerouslySetInnerHTML={{__html: props.summary}}></p>
         <div className="nutrition">
           <div className="item">
@@ -44,7 +44,7 @@ const DetailsTab = {
             <spa className="unit">gram</spa>
           </div>
         </div>
-      </div>
+      </section>
     )
   },
   Ingredients: (props) => {
@@ -57,12 +57,12 @@ const DetailsTab = {
     // Jika "ingredients" belum memiliki isi / undefined
     if (!ingredients) {
       return (
-        <div className={"details-tab description" + isActve}></div>
+        <section className={"details-tab description" + isActve}></section>
       )
     }
 
     return (
-      <div className={"details-tab ingredients" + isActve}>
+      <section className={"details-tab ingredients" + isActve}>
         {ingredients.map(item => (
           <div className="item">
             <div className="image">
@@ -78,7 +78,7 @@ const DetailsTab = {
             <span className="amount">{item.amount.metric.value} {item.amount.metric.unit}</span>
           </div>
         ))}
-      </div>
+      </section>
     )
   },
   Instruction: (props) => {
@@ -91,19 +91,19 @@ const DetailsTab = {
     // Jika "instruction" belum memiliki isi / undefined
     if (!instruction) {
       return (
-        <div className={"details-tab description" + isActve}></div>
+        <section className={"details-tab description" + isActve}></section>
       )
     }
 
     return (
-      <div className={"details-tab instruction" + isActve}>
+      <section className={"details-tab instruction" + isActve}>
         {instruction.steps.map(item => (
           <div className="item">
             <span className="number">{item.number}</span>
             <span className="step">{item.step}</span>
           </div>
         ))}
-      </div>
+      </section>
     )
   }
 }

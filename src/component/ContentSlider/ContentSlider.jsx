@@ -84,16 +84,16 @@ class ContentSlider extends React.Component {
   
     return (
       <div className="content-slider">
-        <div className="header"
+        <header className="header"
           onClick={this.openSeeMore}>
           <span>{this.props.title}</span>
           <img src={arrow} alt="See More" />
-        </div>
-        <div className="slider" ref={this.slider}>
+        </header>
+        <section className="slider" ref={this.slider}>
           <div className="slider-slide">
             {renderedRecipe.length ? recipeCards : loadingCards}
           </div>
-        </div>
+        </section>
       </div>
     )
   }

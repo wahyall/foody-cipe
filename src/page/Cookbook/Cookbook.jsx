@@ -17,21 +17,21 @@ const Cookbook = () => {
 
   if(!renderedCookbook.length) {
     return (
-      <div id="cookbook">
-        <div className="empty">
+      <main id="cookbook">
+        <section className="empty">
           <img src={empty} alt="empty cookbook" />
           <h6 className="title">Oops! It's Empty</h6>
           <span className="message">
             Create a new cookbook by going to the recipe you like and create it
           </span>
           <Link to="/discover" className="btn">Let's Find Out</Link>
-        </div>
-      </div>
+        </section>
+      </main>
     )
   }
 
   return (
-    <div id="cookbook">
+    <main id="cookbook">
       {renderedCookbook.map(cookbook => (
         <CookbookItem key={cookbook.id}
           id={cookbook.id}
@@ -46,7 +46,7 @@ const Cookbook = () => {
       <Route path="/cookbook/:id/edit" exact render={(props) => (
         <EditCookbook {...props} />
       )} />
-    </div>
+    </main>
   )
 }
 

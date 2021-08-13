@@ -21,7 +21,7 @@ const BottomNav = (props) => {
   const discover = useSelector(state => state.discover);
   
   return (
-    <div className="bottom-nav">
+    <nav className="bottom-nav">
       <Link to="/" className="nav-link">
         <BottomNavItem
           name="home"
@@ -43,7 +43,7 @@ const BottomNav = (props) => {
           iconActive={cookbookActive}
           iconUnactive={cookbookUnactive} />
       </Link>
-    </div>
+    </nav>
   )
 }
 

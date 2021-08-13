@@ -53,8 +53,8 @@ class Discover extends React.Component {
 
   render() {
     return (
-      <div id="discover">
-        <div className="tab-categories" ref={this.tabCategories}>
+      <main id="discover">
+        <nav className="tab-categories" ref={this.tabCategories}>
           <div className="tab-slider">
             {this.state.availableCategory.map(category => (
               <Link to={"/discover" + category.path} key={category.name} className="tab-link" draggable="false"
@@ -65,7 +65,7 @@ class Discover extends React.Component {
               </Link>
             ))}
           </div>
-        </div>
+        </nav>
         
         <Switch>
           <Route exact path="/discover" key="all" render={props => (
@@ -90,7 +90,7 @@ class Discover extends React.Component {
             <DiscoverContent name="soup" data={this.props.discover.soup} {...props} />
           )} />
         </Switch>
-      </div>
+      </main>
     )
   }
 }
@@ -127,9 +127,9 @@ const DiscoverContent = (props) => {
   ]
 
   return (
-    <div className="discover-content">
+    <section className="discover-content">
       {props.data.length ? recipeCards : loadingCards}
-    </div>
+    </section>
   )
 }
 

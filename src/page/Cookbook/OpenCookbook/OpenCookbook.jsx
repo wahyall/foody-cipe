@@ -22,8 +22,7 @@ class OpenCookbook extends React.Component {
       id: this.props.match.params.id,
       sortMethod: 'latest',
       isOpenSorting: false,
-      isDeleting: false,
-      isOnboarding: false
+      isDeleting: false
     };
     this.wrapper = React.createRef();
   }
@@ -33,8 +32,7 @@ class OpenCookbook extends React.Component {
     this.setState({
       name: thisCookbook.name,
       desc: thisCookbook.desc,
-      data: thisCookbook.data,
-      isOnboarding: true
+      data: thisCookbook.data
     });
 
     setTimeout(() => {
@@ -145,7 +143,7 @@ class OpenCookbook extends React.Component {
     }
 
     return (
-      <div id="open-cookbook">
+      <main id="open-cookbook">
         <nav>
           <button className="back"
             onClick={() => this.props.history.push('/cookbook/')}>
@@ -158,11 +156,11 @@ class OpenCookbook extends React.Component {
             </Link>
           )}
         </nav>
-        <div className="jumbotron">
+        <header className="jumbotron">
           <div className="name">{this.state.name}</div>
           <div className="desc">{this.state.desc}</div>
-        </div>
-        <div className="action">
+        </header>
+        <section className="action">
           <div className="amount">
             {this.state.data.length} {this.state.data.length > 1 ? "Recipes" : "Recipe"}
           </div>
@@ -195,20 +193,16 @@ class OpenCookbook extends React.Component {
               activeSortMethod={this.state.sortMethod}
               setSortMethod={() => this.setState({sortMethod: 'descending'})} />
           </div>
-        </div>
-        <div className="wrapper" ref={this.wrapper}>
+        </section>
+        <section className="wrapper" ref={this.wrapper}>
           {this.state.data.map(recipe => (
             <ListCard key={recipe.id} 
               cookbookID={this.state.id}
               recipe={recipe}
               setIsDeleting={() => this.setState({isDeleting: true})} />
           ))}
-        </div>
-        {/* {this.state.isOnboarding ? (
-          <Onboarding element="#open-cookbook .wrapper .list-card"
-            onClose={() => this.setState({isOnboarding: false})} />
-        ) : null} */}
-      </div>
+        </section>
+      </main>
     )
   }
 }
@@ -217,31 +211,6 @@ const SortOption = (props) => {
   return (
     <div className={"sort-option" + (props.activeSortMethod === props.dataSort ? " active" : "")}
       onClick={props.setSortMethod}>{props.name}</div>
-  )
-}
-
-const Onboarding = (props) => {
-  useEffect(() => {
-    const shownElement = document.querySelector(props.element);
-    shownElement.style.zIndex = '3';
-    setTimeout(() => {
-      shownElement.firstElementChild.style.transform = 'translate3d(-60px, 0px, 0px)';
-    }, 300);
-
-    return () => {
-      shownElement.style.zIndex = 'inherit';
-      shownElement.firstElementChild.style.transform = 'inherit';
-    };
-  }, []);
-
-  return (
-    <div className="onboarding">
-      <div className="content">
-        <div className="message">Swipe left to delete card</div>
-        <div className="btn"
-          onClick={props.onClose}>GOT IT</div>
-      </div>
-    </div>
   )
 }
 

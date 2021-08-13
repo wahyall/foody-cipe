@@ -10,10 +10,10 @@ import saveUnactive from '../../icon/save-cookbook-unactive.svg';
 class SaveRecipes extends React.Component {
   render() {
     return (
-      <div className={"save-recipes" + (this.props.isSavingRecipe ? " active" : "")}
+      <main className={"save-recipes" + (this.props.isSavingRecipe ? " active" : "")}
         onClick={(ev) => ev.target.classList.contains('save-recipes') && this.props.closeSavingRecipe()}>
         <div className="modal">
-          <div className="modal-header">
+          <section className="modal-header">
             <div>
               <span className="title">Save</span>
               <span className="name">{this.props.recipe.title}</span>
@@ -23,8 +23,8 @@ class SaveRecipes extends React.Component {
                 this.props.openCreatingCookbook();
                 this.props.closeSavingRecipe();
               }}>+ Cookbook</button>
-          </div>
-          <div className="modal-body">
+          </section>
+          <section className="modal-body">
             {this.props.cookbook.length > 1 ? (
               this.props.cookbook.slice(1).map(list => (
                 <SelectCookbook recipe={this.props.recipe} cookbook={list} />
@@ -41,16 +41,16 @@ class SaveRecipes extends React.Component {
                 }}>Create New</button>
               </div>
             )}
-          </div>
-          <div className="modal-footer">
+          </section>
+          <section className="modal-footer">
             <button className="done"
               onClick={() => {
                 this.props.closeSavingRecipe();
                 this.props.dispatch({type: 'SHOW_TOAST', message: 'Cookbook updated!'})
               }}>Done</button>
-          </div>
+          </section>
         </div>
-      </div>
+      </main>
     )
   }
 }
