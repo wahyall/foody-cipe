@@ -16,13 +16,10 @@ const SearchResults = (props) => {
   const [keyword, setKeyword] = useState(props.search.keyword);
 
   useEffect(() => {
-    // Jika keyword kosong (case disini user langsung menuju halaman pencarian)
+    // Jika keyword yang berasal dari store/redux kosong (case disini user langsung menuju halaman pencarian)
     if (!keyword.length) {
       const newKeyword = props.match.params.keyword;
       setKeyword(newKeyword);
-
-      // Direct search bertujuan untuk melakukan blur pada input search jika bernilai true
-      dispatch({type: 'SET_DIRECT_SEARCH', keyword: newKeyword});
       dispatch(searchRecipes(newKeyword));
     }
   }, []);

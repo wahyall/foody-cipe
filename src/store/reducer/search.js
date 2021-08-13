@@ -1,8 +1,7 @@
 const initState = {
   keyword: "",
   results: [],
-  isNotFound: false,
-  isDirectSearch: false
+  isNotFound: false
 }
 
 export default function search(state = initState, action) {
@@ -19,13 +18,6 @@ export default function search(state = initState, action) {
       return {
         ...state,
         keyword: action.keyword
-      }
-
-    case 'SET_DIRECT_SEARCH':
-      return {
-        ...state,
-        keyword: action.keyword,
-        isDirectSearch: !state.isDirectSearch
       }
 
     case 'CLEAR_SEARCH':

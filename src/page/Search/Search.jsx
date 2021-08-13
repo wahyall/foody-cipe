@@ -40,19 +40,18 @@ class Search extends React.Component {
   }
 
   componentDidMount = () => {
-    if (!this.props.search.keyword.length) {
+    const paths = this.props.location.pathname.split('/');
+
+    // Mengecek jika user langsung menuju ke halaman pencarian,
+    // dan disertai dengan keywrod seperti /search/:keywrod
+    if (!paths[2]) {
       this.inputSearch.current.focus();
     }
     this.inputSearch.current.value = this.props.search.keyword;
+
   }
 
   componentDidUpdate = () => {
-    // Mengecek apakah user langsung menuju halaman pencarian,
-    // user langsung menuju halaman dengan url /search/:keyword
-    if (this.props.search.isDirectSearch) {
-      this.inputSearch.current.blur();
-      this.props.dispatch({type: 'SET_DIRECT_SEARCH', keyword: this.props.search.keyword});
-    }
     this.inputSearch.current.value = this.props.search.keyword;
   }
 
