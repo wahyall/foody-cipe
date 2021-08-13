@@ -29,7 +29,7 @@ export const getRecipeInstruction = (id) => {
 export const searchRecipes = (keyword) => {
   return dispatch => {
     dispatch({type: 'SET_SEARCH_KEYWORD', keyword});
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${keyword}&number=20&apiKey=${apiKey[4]}`)
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${keyword}&number=10&apiKey=${apiKey[4]}`)
       .then(response => response.json())
       .then(async data => {
         if (data.results.length) {
