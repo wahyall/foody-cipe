@@ -39,7 +39,6 @@
           overflow: hidden;
           font-weight: 500;
           line-height: 1.25em;
-          margin-bottom: 0.15rem;
         }
 
         .time {
@@ -48,6 +47,10 @@
           color: $grey;
         }
       }
+    }
+
+    .body:active {
+      background-color: darken($color: $bg-white, $amount: 4);
     }
 
     .delete {

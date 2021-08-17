@@ -10,6 +10,7 @@
   column-gap: 0.75rem;
   position: relative;
   margin-bottom: 1rem;
+  transition: 0.2s;
 
   .thumbnail {
     width: 100%;
@@ -67,7 +68,6 @@
     .name {
       font-weight: 600;
       line-height: 1.2em;
-      margin-bottom: 0.25rem;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -145,8 +145,12 @@
       }
 
       .confirm.btn:active {
-        background-color: darken($color: $delete, $amount: 5);
+        background-color: darken($color: $delete, $amount: 4);
       }
     }
   }
+}
+
+.cookbook-item:active {
+  background-color: darken($color: $bg-white, $amount: 5);
 }
