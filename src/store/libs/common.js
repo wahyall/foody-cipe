@@ -52,9 +52,9 @@ export const draggableOverflow = (elem) => {
 }
 
 export const getThisDate = () => {
-  const currentYear = JSON.stringify(new Date().getFullYear()),
-    currentMonth = JSON.stringify(new Date().getMonth() + 1),
-    currentDate = JSON.stringify(new Date().getDate());
+  const currentYear = JSON.stringify(new Date().getUTCFullYear()),
+    currentMonth = JSON.stringify(new Date().getUTCMonth() + 1),
+    currentDate = JSON.stringify(new Date().getUTCDate());
   
   // Membuat format tanggal '20210806'
   const thisDate = Number(`${currentYear}${currentMonth.length > 1 ? currentMonth : (0 + currentMonth)}${currentDate.length > 1 ? currentDate : (0 + currentDate)}`);

@@ -118,7 +118,7 @@ export const discoverDispatch = {
   },
   mainCourse: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=main course&apiKey=${apiKey[3]}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=main course&apiKey=${apiKey[5]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -130,7 +130,7 @@ export const discoverDispatch = {
   },
   sideDish: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=side dish&apiKey=${apiKey[3]}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=side dish&apiKey=${apiKey[5]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
@@ -142,7 +142,7 @@ export const discoverDispatch = {
   },
   appetizer: () => {
     return dispatch => {
-      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=appetizer&apiKey=${apiKey[3]}`)
+      fetch(`https://api.spoonacular.com/recipes/random?number=40&tags=appetizer&apiKey=${apiKey[5]}`)
         .then(response => response.json())
         .then(data => {
           // Filter recipes yang tidak memiliki gambar
