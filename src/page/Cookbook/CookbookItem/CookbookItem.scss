@@ -1,87 +1,94 @@
 @import "../../../color.scss";
 
 .cookbook-item {
-  padding: 0.75rem;
   background-color: $bg-white;
   box-shadow: 0 0.5rem 1rem rgba($color: $text-dark, $alpha: 0.0125);
   border-radius: 4px;
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  column-gap: 0.75rem;
   position: relative;
   margin-bottom: 1rem;
   transition: 0.2s;
 
-  .thumbnail {
-    width: 100%;
-    height: 64px;
-    border-radius: 4px;
-    overflow: hidden;
-    align-items: center;
-    position: relative;
+  .body {
+    padding: 0.75rem;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    column-gap: 0.75rem;
 
-    div {
+    .thumbnail {
       width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-  }
-
-  .thumbnail.type-1 {
-    display: flex;
-    justify-content: center;
-  }
-
-  .thumbnail.type-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 3px;
-  }
-
-  .thumbnail.type-3 {
-    display: grid;
-    grid-template-columns: 25% 25% 50%;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "first first second" "first first third";
-    gap: 3px;
-
-    div:nth-child(1) {
-      grid-area: first;
-    }
-
-    div:nth-child(2) {
-      grid-area: second;
-    }
-
-    div:nth-child(3) {
-      grid-area: third;
-    }
-  }
-
-  .content {
-    display: inline-block;
-    color: inherit;
-    text-decoration: none;
-
-    .name {
-      font-weight: 600;
-      line-height: 1.2em;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+      height: 64px;
+      border-radius: 4px;
       overflow: hidden;
-      padding-right: 0.5rem;
-      cursor: pointer;
+      align-items: center;
+      position: relative;
+
+      div {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
     }
 
-    .amount {
-      font-weight: 500;
-      font-size: 0.9rem;
-      line-height: 1em;
-      color: $grey;
+    .thumbnail.type-1 {
+      display: flex;
+      justify-content: center;
     }
+
+    .thumbnail.type-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 3px;
+    }
+
+    .thumbnail.type-3 {
+      display: grid;
+      grid-template-columns: 25% 25% 50%;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas: "first first second" "first first third";
+      gap: 3px;
+
+      div:nth-child(1) {
+        grid-area: first;
+      }
+
+      div:nth-child(2) {
+        grid-area: second;
+      }
+
+      div:nth-child(3) {
+        grid-area: third;
+      }
+    }
+
+    .content {
+      display: inline-block;
+      color: inherit;
+      text-decoration: none;
+
+      .name {
+        font-weight: 600;
+        line-height: 1.2em;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        padding-right: 0.5rem;
+        cursor: pointer;
+      }
+
+      .amount {
+        font-weight: 500;
+        font-size: 0.9rem;
+        line-height: 1em;
+        color: $grey;
+      }
+    }
+  }
+
+  .body:active {
+    background-color: darken($color: $bg-white, $amount: 4);
   }
 
   .option {
@@ -149,8 +156,4 @@
       }
     }
   }
-}
-
-.cookbook-item:active {
-  background-color: darken($color: $bg-white, $amount: 5);
 }
