@@ -10,6 +10,7 @@ import CreateCookbook from '../../component/CreateCookbook/CreateCookbook';
 
 // Libs
 import { getInformation } from '../../store/libs/request';
+import { compactNumber } from '../../store/libs/common';
 
 class Details extends React.Component {
   constructor(props) {
@@ -86,7 +87,7 @@ class Details extends React.Component {
             <div className="recipe-name">{this.state.data.title}</div>
             <div className="info">
               <div className="item">
-                <span className="value">{this.state.data.aggregateLikes}</span>
+                <span className="value">{compactNumber(this.state.data.aggregateLikes)}</span>
                 <span>Likes</span>
               </div>
               <div className="line-separator"></div>

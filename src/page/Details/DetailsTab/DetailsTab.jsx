@@ -3,6 +3,7 @@ import './DetailsTab.scss';
 
 // Libs
 import { getRecipeNutrition, getRecipeIngredients, getRecipeInstruction } from '../../../store/libs/request';
+import { compactNumber } from '../../../store/libs/common';
 
 const DetailsTab = {
   Description: (props) => {
@@ -24,22 +25,22 @@ const DetailsTab = {
         <p className="sum" dangerouslySetInnerHTML={{__html: props.summary}}></p>
         <div className="nutrition">
           <div className="item">
-            <span className="value">{nutrition.calories.replace('k', '')}</span>
+            <span className="value">{compactNumber(Number(nutrition.calories.replace('k', '')))}</span>
             <span className="type">Calories</span>
-            <span className="unit">kkal</span>
+            <span className="unit">kal</span>
           </div>
           <div className="item">
-            <span className="value">{nutrition.carbs.replace('g', '')}</span>
+            <span className="value">{compactNumber(Number(nutrition.carbs.replace('g', '')))}</span>
             <span className="type">Carbo</span>
             <span className="unit">gram</span>
           </div>
           <div className="item">
-            <span className="value">{nutrition.fat.replace('g', '')}</span>
+            <span className="value">{compactNumber(Number(nutrition.fat.replace('g', '')))}</span>
             <span className="type">Fat</span>
             <span className="unit">gram</span>
           </div>
           <div className="item">
-            <spa className="value">{nutrition.protein.replace('g', '')}</spa>
+            <spa className="value">{compactNumber(Number(nutrition.protein.replace('g', '')))}</spa>
             <spa className="type">Protein</spa>
             <spa className="unit">gram</spa>
           </div>
