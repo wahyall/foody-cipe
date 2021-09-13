@@ -120,7 +120,7 @@ class Details extends React.Component {
               <button
                 className={"tab-item" + (this.state.activeTab === "Instruction" ? " active" : "")} 
                 onClick={() => this.setState({activeTab: 'Instruction'})}>
-                Insontruction
+                Instruction
               </button>
             </nav>
             <DetailsTab.Description
