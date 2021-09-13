@@ -7,7 +7,6 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^5.0.2",
-    "magic-grid": "^3.2.4",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-contenteditable": "^3.3.5",
@@ -17,7 +16,6 @@
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.3.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
