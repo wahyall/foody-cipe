@@ -5,24 +5,25 @@ export const getInformation = async (id) => {
   return fetch(`https://api.spoonacular.com/recipes/informationBulk?ids=${id}&apiKey=${apiKey[0]}`)
     .then(response => response.json())
     .then(data => data.filter(recipe => recipe.image))
+    .catch(() => store.dispatch({ type: 'SET_ERROR' }))
 }
 
 export const getRecipeNutrition = (id) => {
   return fetch(`https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=${apiKey[1]}`)
     .then(response => response.json())
-    .then(data => data)
+    .then(data => data.code === 402 ? store.dispatch({ type: 'SET_ERROR' }) : data)
 }
 
 export const getRecipeIngredients = (id) => {
   return fetch(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=${apiKey[1]}`)
     .then(response => response.json())
-    .then(data => data.ingredients)
+    .then(data => data.code === 402 ? store.dispatch({ type: 'SET_ERROR' }) : data.ingredients)
 }
 
 export const getRecipeInstruction = (id) => {
   return fetch(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apiKey[1]}`)
     .then(response => response.json())
-    .then(data => data[0])
+    .then(data => data.code === 402 ? store.dispatch({ type: 'SET_ERROR' }) : data[0])
 }
 
 export const searchRecipes = (keyword) => {
@@ -37,6 +38,7 @@ export const searchRecipes = (keyword) => {
           return dispatch({ type: 'SET_SEARCH_RESULTS', keyword, results: [] });
         }
       })
+      .catch(() => store.dispatch({ type: 'SET_ERROR' }))
   }
 }
 
@@ -50,6 +52,7 @@ export const homeDispatch = {
           const recipesData = data.recipes.filter(recipe => recipe.image);
           return dispatch({ type: 'SET_HOME_CONTENT', name: 'recommendation', data: recipesData })
         })
+        .catch(() => store.dispatch({ type: 'SET_ERROR' }))
     }
   },
   popular: () => {
@@ -77,6 +80,7 @@ export const homeDispatch = {
           const recipesData = data.recipes.filter(recipe => recipe.image);
           return dispatch({ type: 'SET_HOME_CONTENT', name: 'recent', data: recipesData });
         })
+        .catch(() => store.dispatch({ type: 'SET_ERROR' }))
     }
   },
   category: () => {
@@ -94,6 +98,7 @@ export const homeDispatch = {
           const recipesData = data.recipes.filter(recipe => recipe.image);
           return dispatch({ type: 'SET_HOME_CONTENT', name: 'category', data: recipesData })
         })
+        .catch(() => store.dispatch({ type: 'SET_ERROR' }))
     }
   }
 }
@@ -108,6 +113,7 @@ export const discoverDispatch = {
           const recipesData = data.recipes.filter(recipe => recipe.image);
           return dispatch({ type: 'SET_DATA_DISCOVER', name: 'all', data: recipesData });
         })
+        .catch(() => store.dispatch({ type: 'SET_ERROR' }))
     }
   },
   mainCourse: () => {
@@ -119,6 +125,7 @@ export const discoverDispatch = {
           const recipesData = data.recipes.filter(recipe => recipe.image);
           return dispatch({ type: 'SET_DATA_DISCOVER', name: 'mainCourse', data: recipesData });
         })
+        .catch(() => store.dispatch({ type: 'SET_ERROR' }))
     }
   },
   sideDish: () => {
@@ -130,6 +137,7 @@ export const discoverDispatch = {
           const recipesData = data.recipes.filter(recipe => recipe.image);
           return dispatch({ type: 'SET_DATA_DISCOVER', name: 'sideDish', data: recipesData });
         })
+        .catch(() => store.dispatch({ type: 'SET_ERROR' }))
     }
   },
   appetizer: () => {
@@ -141,6 +149,7 @@ export const discoverDispatch = {
           const recipesData = data.recipes.filter(recipe => recipe.image);
           return dispatch({ type: 'SET_DATA_DISCOVER', name: 'appetizer', data: recipesData });
         })
+        .catch(() => store.dispatch({ type: 'SET_ERROR' }))
     }
   },
   salad: () => {
@@ -152,6 +161,7 @@ export const discoverDispatch = {
           const recipesData = data.recipes.filter(recipe => recipe.image);
           return dispatch({ type: 'SET_DATA_DISCOVER', name: 'salad', data: recipesData });
         })
+        .catch(() => store.dispatch({ type: 'SET_ERROR' }))
     }
   },
   drink: () => {
@@ -163,6 +173,7 @@ export const discoverDispatch = {
           const recipesData = data.recipes.filter(recipe => recipe.image);
           return dispatch({ type: 'SET_DATA_DISCOVER', name: 'drink', data: recipesData });
         })
+        .catch(() => store.dispatch({ type: 'SET_ERROR' }))
     }
   },
   soup: () => {
@@ -174,6 +185,7 @@ export const discoverDispatch = {
           const recipesData = data.recipes.filter(recipe => recipe.image);
           return dispatch({ type: 'SET_DATA_DISCOVER', name: 'soup', data: recipesData });
         })
+        .catch(() => store.dispatch({ type: 'SET_ERROR' }))
     }
   }
 }
