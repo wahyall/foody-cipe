@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import { connect } from 'react-redux';
+import { ErrorBoundary } from 'react-error-boundary';
 
 // Page
 import Home from './page/Home/Home';
@@ -22,7 +23,7 @@ import ErrorBoundary from './component/ErrorBoundary/ErrorBoundary';
 
 const App = (props) => {
   return (
-    <ErrorBoundary>
+    <ErrorBoundary FallbackComponent={Error}>
       <Router>
         {/* Global Component */}
         <SearchBox />
