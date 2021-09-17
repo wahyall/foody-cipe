@@ -19,7 +19,6 @@ import Search from './page/Search/Search';
 import SearchBox from './component/SearchBox/SearchBox';
 import BottomNav from './component/BottomNav/BottomNav';
 import ToastInfo from './component/ToastInfo/ToastInfo';
-import ErrorBoundary from './component/ErrorBoundary/ErrorBoundary';
 
 const App = (props) => {
   return (
