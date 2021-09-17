@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import { connect } from 'react-redux';
+import { ErrorBoundary } from 'react-error-boundary';
 
 // Page
 import Home from './page/Home/Home';
@@ -21,49 +22,45 @@ import BottomNav from './component/BottomNav/BottomNav';
 import ToastInfo from './component/ToastInfo/ToastInfo';
 
 const App = (props) => {
-  if (props.error) {
-    return (
-      <Error />
-    )
-  }
-
   return (
-    <Router>
-      {/* Global Component */}
-      <SearchBox />
-      {props.toast.active && (<ToastInfo />)}
-      <Route path="" render={props => (
-        <BottomNav {...props} />
-      )} />
-
-      <Switch>
-        {/* Home*/}
-        <Route exact path={["/", "/more/recommendation", "/more/popular", "/more/rated", "/more/recent", "/more/category"]} render={props => (
-          <Home {...props} />
+    <ErrorBoundary FallbackComponent={Error}>
+      <Router>
+        {/* Global Component */}
+        <SearchBox />
+        {props.toast.active && (<ToastInfo />)}
+        <Route path="" render={props => (
+          <BottomNav {...props} />
         )} />
 
-        {/* Discover */}
-        <Route path="/discover" render={props => (
-          <Discover {...props} />
-        )} />
+        <Switch>
+          {/* Home*/}
+          <Route exact path={["/", "/more/recommendation", "/more/popular", "/more/rated", "/more/recent", "/more/category"]} render={props => (
+            <Home {...props} />
+          )} />
 
-        {/* Cookbook */}
-        <Route path="/cookbook" render={props => (
-          <Cookbook {...props} />
-        )} />
+          {/* Discover */}
+          <Route path="/discover" render={props => (
+            <Discover {...props} />
+          )} />
 
-        {/* Details */}
-        <Route path="/details/:id" render={props => (
-          <Details {...props} />
-        )} />
+          {/* Cookbook */}
+          <Route path="/cookbook" render={props => (
+            <Cookbook {...props} />
+          )} />
 
-        {/* Search */}
-        <Route path="/search" render={props => (
-          <Search {...props} />
-        )} />
-          
-      </Switch>
-    </Router>
+          {/* Details */}
+          <Route path="/details/:id" render={props => (
+            <Details {...props} />
+          )} />
+
+          {/* Search */}
+          <Route path="/search" render={props => (
+            <Search {...props} />
+          )} />
+
+        </Switch>
+      </Router>
+    </ErrorBoundary>
   )
 }
 
