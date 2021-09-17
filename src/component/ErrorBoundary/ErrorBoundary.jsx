@@ -4,8 +4,11 @@ import React from 'react';
 import Error from '../../page/Error/Error';
 
 class ErrorBoundary extends React.Component {
-  state = {
-    hasError: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false
+    }
   }
 
   static getDerivedStateFromError() {
