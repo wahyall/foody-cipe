@@ -30,6 +30,7 @@ const App = (props) => {
         <Route path="" render={props => (
           <BottomNav {...props} />
         )} />
+
         <Switch>
           {/* Home*/}
           <Route exact path={["/", "/more/recommendation", "/more/popular", "/more/rated", "/more/recent", "/more/category"]} render={props => (
